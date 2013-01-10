@@ -64,6 +64,7 @@
 		<android.version>4.1.1.4</android.version>
 		<android.platform>17</android.platform>
 		<android.support.version>r7</android.support.version>
+		<android.sherlock.version>4.2.0</android.sherlock.version>
 
 		<android-maven.version>3.5.0</android-maven.version>
 	</properties>
@@ -80,6 +81,13 @@
 				<groupId>com.google.android</groupId>
 				<artifactId>support-v4</artifactId>
 				<version>${android.support.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.actionbarsherlock</groupId>
+				<artifactId>library</artifactId>
+				<version>${android.sherlock.version}</version>
+				<type>apklib</type>
 			</dependency>
 
 			<dependency>

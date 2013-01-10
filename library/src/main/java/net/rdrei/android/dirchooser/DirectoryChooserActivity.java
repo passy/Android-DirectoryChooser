@@ -13,9 +13,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.FileObserver;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -27,11 +24,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
+
 /**
  * Let's the user choose a directory on the storage device. The selected folder
  * will be sent back to the starting activity as an activity result.
  */
-public class DirectoryChooserActivity extends Activity {
+public class DirectoryChooserActivity extends SherlockActivity {
     public static final String EXTRA_NEW_DIR_NAME = "directory_name";
     public static final String RESULT_SELECTED_DIR = "selected_dir";
     public static final int RESULT_CODE_DIR_SELECTED = 1;
@@ -123,7 +125,7 @@ public class DirectoryChooserActivity extends Activity {
     }
 
     /* package */void setupActionBar() {
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void debug(String message, Object... args) {
@@ -216,7 +218,7 @@ public class DirectoryChooserActivity extends Activity {
     private void refreshButtonState() {
         if (mSelectedDir != null) {
             mBtnConfirm.setEnabled(isValidFile(mSelectedDir));
-            invalidateOptionsMenu();
+            supportInvalidateOptionsMenu();
         }
     }
 

@@ -3,9 +3,9 @@ Android DirectoryChooser
 
 A simple directory chooser you can integrate into your Android app.
 
-This version of the library has no additional dependencies, but requires Android
-v11+ to work. There is, however, [a v11-brach][2] that supports down to v7 using
-ActionBarSherlock.
+This version of the library requires ActionBarSherlock and supports Android 2.1
+and above. If you don't care for support of pre-V11 Android releases, the
+[master branch][2] works without external dependencies.
 
 You can download the sample app from the Play Store:
 
@@ -47,7 +47,7 @@ The library is also awailable on Sonatype:
     <dependency>
       <groupId>net.rdrei.android.dirchooser</groupId>
       <artifactId>library</artifactId>
-      <version>1.0</version>
+      <version>1.0-pre-v11</version>
       <type>apklib</type>
     </dependency>
 
@@ -56,7 +56,7 @@ The library is also awailable on Sonatype:
     <dependency>
       <groupId>net.rdrei.android.dirchooser</groupId>
       <artifactId>library</artifactId>
-      <version>1.1-SNAPSHOT</version>
+      <version>1.1-pre-v11-SNAPSHOT</version>
       <type>apklib</type>
     </dependency>
 
@@ -148,5 +148,5 @@ Thanks
 Sample App icon by [Frank Souza](http://franksouza183.deviantart.com/).
 
  [1]: https://raw.github.com/passy/Android-DirectoryChooser/master/media/screenshot_phone.png
- [2]: https://github.com/passy/Android-DirectoryChooser/tree/pre-v11
+ [2]: https://github.com/passy/Android-DirectoryChooser/tree/master
  [3]: https://play.google.com/store/apps/details?id=net.rdrei.android.dirchooser.sample
