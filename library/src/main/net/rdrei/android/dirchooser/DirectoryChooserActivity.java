@@ -59,7 +59,7 @@ public class DirectoryChooserActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        setupActionBar();
 
         setContentView(R.layout.directory_chooser);
 
@@ -122,7 +122,11 @@ public class DirectoryChooserActivity extends Activity {
         changeDirectory(Environment.getExternalStorageDirectory());
     }
 
-    private void debug(String message, Object ...args) {
+    /* package */void setupActionBar() {
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void debug(String message, Object... args) {
         Log.d(TAG, String.format(message, args));
     }
 
@@ -161,7 +165,7 @@ public class DirectoryChooserActivity extends Activity {
 
     /**
      * Change the directory that is currently being displayed.
-     * 
+     *
      * @param dir
      *            The file the activity should switch to. This File must be
      *            non-null and a directory, otherwise the displayed directory
