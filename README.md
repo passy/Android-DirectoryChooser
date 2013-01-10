@@ -6,6 +6,8 @@ A simple directory chooser you can integrate into your Android app.
 Based on the DirectoryChooser from the excellent
 [AntennaPod App](https://github.com/danieloeh/AntennaPod) by danieloeh.
 
+![DirChooser Sample Screenshot][1]
+
 Dependencies
 ------------
 
@@ -67,6 +69,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             // Nothing selected
         }
     }
+}
 ```
 
 License
@@ -87,3 +90,5 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+ [1]: https://raw.github.com/passy/Android-DirectoryChooser/master/media/screenshot_phone.png
