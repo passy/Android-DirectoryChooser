@@ -156,7 +156,7 @@ public class DirectoryChooserActivity extends RoboActivity {
 
     /**
      * Change the directory that is currently being displayed.
-     *
+     * 
      * @param dir
      *            The file the activity should switch to. This File must be
      *            non-null and a directory, otherwise the displayed directory
@@ -260,10 +260,6 @@ public class DirectoryChooserActivity extends RoboActivity {
             return true;
         } else if (itemId == R.id.new_folder_item) {
             openNewFolderDialog();
-            return true;
-        } else if (itemId == R.id.set_to_default_folder_item) {
-            mSelectedDir = null;
-            returnSelectedFolder();
             return true;
         }
 

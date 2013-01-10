@@ -56,7 +56,6 @@ public class DirChooserSample extends Activity {
             } else {
                 mDirectoryTextView.setText("nothing selected");
             }
-
         }
     }
 }
