@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-import roboguice.activity.RoboActivity;
-import roboguice.inject.InjectExtra;
-import roboguice.inject.InjectView;
-import roboguice.util.Ln;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.FileObserver;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -34,24 +31,17 @@ import android.widget.Toast;
  * Let's the user choose a directory on the storage device. The selected folder
  * will be sent back to the starting activity as an activity result.
  */
-public class DirectoryChooserActivity extends RoboActivity {
+public class DirectoryChooserActivity extends Activity {
     public static final String EXTRA_NEW_DIR_NAME = "directory_name";
     public static final String RESULT_SELECTED_DIR = "selected_dir";
     public static final int RESULT_CODE_DIR_SELECTED = 1;
 
-    @InjectView(tag = "btnConfirm")
+    private static final String TAG = "DirectoryChooser";
+
     private Button mBtnConfirm;
-
-    @InjectView(tag = "btnCancel")
     private Button mBtnCancel;
-
-    @InjectView(tag = "btnNavUp")
     private ImageButton mBtnNavUp;
-
-    @InjectView(tag = "txtvSelectedFolder")
     private TextView mTxtvSelectedFolder;
-
-    @InjectView(tag = "directoryList")
     private ListView mListDirectories;
 
     private ArrayAdapter<String> mListDirectoriesAdapter;
@@ -61,15 +51,26 @@ public class DirectoryChooserActivity extends RoboActivity {
     private File[] mFilesInDir;
     private FileObserver mFileObserver;
 
-    @InjectExtra(value = EXTRA_NEW_DIR_NAME, optional = true)
+    /**
+     * Extra injected from the calling activity.
+     */
     private String mNewDirectoryName;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         setContentView(R.layout.directory_chooser);
+
+        mNewDirectoryName = getIntent().getStringExtra(EXTRA_NEW_DIR_NAME);
+
+        mBtnConfirm = (Button) findViewById(R.id.btnConfirm);
+        mBtnCancel = (Button) findViewById(R.id.btnCancel);
+        mBtnNavUp = (ImageButton) findViewById(R.id.btnNavUp);
+        mTxtvSelectedFolder = (TextView) findViewById(R.id.txtvSelectedFolder);
+        mListDirectories = (ListView) findViewById(R.id.directoryList);
+
         mBtnConfirm.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -94,7 +95,7 @@ public class DirectoryChooserActivity extends RoboActivity {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view,
                     int position, long id) {
-                Ln.d("Selected index: %d", position);
+                debug("Selected index: %d", position);
                 if (mFilesInDir != null && position >= 0
                         && position < mFilesInDir.length) {
                     changeDirectory(mFilesInDir[position]);
@@ -121,13 +122,17 @@ public class DirectoryChooserActivity extends RoboActivity {
         changeDirectory(Environment.getExternalStorageDirectory());
     }
 
+    private void debug(String message, Object ...args) {
+        Log.d(TAG, String.format(message, args));
+    }
+
     /**
      * Finishes the activity and returns the selected folder as a result. The
      * selected folder can also be null.
      */
     private void returnSelectedFolder() {
         if (mSelectedDir != null) {
-            Ln.d("Returning %s as result", mSelectedDir.getAbsolutePath());
+            debug("Returning %s as result", mSelectedDir.getAbsolutePath());
         }
         Intent resultData = new Intent();
         if (mSelectedDir != null) {
@@ -164,9 +169,9 @@ public class DirectoryChooserActivity extends RoboActivity {
      */
     private void changeDirectory(File dir) {
         if (dir == null) {
-            Ln.d("Could not change folder: dir was null");
+            debug("Could not change folder: dir was null");
         } else if (!dir.isDirectory()) {
-            Ln.d("Could not change folder: dir is no directory");
+            debug("Could not change folder: dir is no directory");
         } else {
             File[] contents = dir.listFiles();
             if (contents != null) {
@@ -192,9 +197,9 @@ public class DirectoryChooserActivity extends RoboActivity {
                 mListDirectoriesAdapter.notifyDataSetChanged();
                 mFileObserver = createFileObserver(dir.getAbsolutePath());
                 mFileObserver.startWatching();
-                Ln.d("Changed directory to %s", dir.getAbsolutePath());
+                debug("Changed directory to %s", dir.getAbsolutePath());
             } else {
-                Ln.d("Could not change folder: contents of dir were null");
+                debug("Could not change folder: contents of dir were null");
             }
         }
         refreshButtonState();
@@ -225,7 +230,7 @@ public class DirectoryChooserActivity extends RoboActivity {
 
             @Override
             public void onEvent(int event, String path) {
-                Ln.d("FileObserver received event %d", event);
+                debug("FileObserver received event %d", event);
                 runOnUiThread(new Runnable() {
 
                     @Override
