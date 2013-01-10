@@ -24,6 +24,16 @@ Usage
 For a full example see the `sample` app in the
 [repository](https://github.com/passy/Android-DirectoryChooser/tree/master/sample).
 
+### Dependencies
+
+Check out this repository and add it as a library project.
+
+    git checkout https://github.com/passy/Android-DirectoryChooser.git
+    
+Import the project into your favorite IDE and add
+`android.library.reference.1=/path/to/Android-DirectoryChooser/library` to your
+`project.properties`.
+
 ### Manifest
 
 You need to declare the `DirectoryChooserActivity` and request the
