@@ -271,31 +271,34 @@ public class DirectoryChooserActivity extends RoboActivity {
      * new folder.
      */
     private void openNewFolderDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.create_folder_label);
-        builder.setMessage(String.format(getString(R.string.create_folder_msg),
-                mNewDirectoryName));
-        builder.setNegativeButton(R.string.cancel_label,
-                new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.create_folder_label)
+                .setMessage(
+                        String.format(getString(R.string.create_folder_msg),
+                                mNewDirectoryName))
+                .setNegativeButton(R.string.cancel_label,
+                        new DialogInterface.OnClickListener() {
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        builder.setPositiveButton(R.string.confirm_label,
-                new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                    int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                .setPositiveButton(R.string.confirm_label,
+                        new DialogInterface.OnClickListener() {
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        int msg = createFolder();
-                        Toast t = Toast.makeText(DirectoryChooserActivity.this,
-                                msg, Toast.LENGTH_SHORT);
-                        t.show();
-                    }
-                });
-        builder.create().show();
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                    int which) {
+                                dialog.dismiss();
+                                int msg = createFolder();
+                                Toast t = Toast.makeText(
+                                        DirectoryChooserActivity.this, msg,
+                                        Toast.LENGTH_SHORT);
+                                t.show();
+                            }
+                        }).create().show();
     }
 
     /**
