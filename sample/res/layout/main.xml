@@ -8,7 +8,7 @@
 <TextView
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:text="Directory selected:"
+    android:text="@string/directory_selected_label"
     android:textAppearance="?android:attr/textAppearanceMedium" />
     />
 
