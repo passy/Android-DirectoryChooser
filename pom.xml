@@ -81,6 +81,27 @@
 				<artifactId>support-v4</artifactId>
 				<version>${android.support.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>com.squareup.android</groupId>
+				<artifactId>robolectric</artifactId>
+				<version>0.1-SNAPSHOT</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.8.4</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
