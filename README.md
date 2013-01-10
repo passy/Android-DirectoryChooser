@@ -3,6 +3,9 @@ Android DirChooser
 
 A simple directory chooser you can integrate into your Android app.
 
+Based on the DirectoryChooser from the excellent
+[AntennaPod App](https://github.com/danieloeh/AntennaPod) by danieloeh.
+
 Dependencies
 ------------
 
@@ -14,6 +17,57 @@ Roadmap
 * 1.0: Synchronous directory chooser, documentation, good test coverage
 * 1.1: pre-ICS support with RoboSherlock
 * 2.0: Asynchronous directory chooser
+
+Usage
+-----
+
+For a full example see the `sample` app in the
+[repository](https://github.com/passy/Android-DirectoryChooser/tree/master/sample).
+
+### Manifest
+
+You need to declare the `DirectoryChooserActivity` and request the
+`android.permission.WRITE_EXTERNAL_STORAGE` permission.
+
+```xml
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+...
+<application>
+    <activity android:name="net.rdrei.android.dirchooser.DirectoryChooserActivity" />
+</application>
+```
+
+### Activity
+
+To choose a directory, start the activity from your app logic:
+
+```java
+final Intent chooserIntent = new Intent(this, DirectoryChooserActivity.class);
+
+// Optional: Allow users to create a new directory with a fixed name.
+chooserIntent.putExtra(DirectoryChooserActivity.EXTRA_DIRECTORY_NAME,
+                       "DirChooserSample");
+
+// REQUEST_DIRECTORY is a constant integer to identify the request, e.g. 0
+startActivityForResult(chooserIntent, REQUEST_DIRECTORY);
+```
+
+Handle the result in your `onActivityResult` method:
+
+```java
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    if (requestCode == REQUEST_DIRECTORY) {
+        if (resultCode == DirectoryChooserActivity.RESULT_CODE_DIR_SELECTED) {
+            handleDirectoryChoice(data
+                .getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR));
+        } else {
+            // Nothing selected
+        }
+    }
+```
 
 License
 -------
