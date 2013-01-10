@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="bright_blue">#33B5E5</color>
+
+    <!-- Use Gingerbread-orange -->
+    <color name="selection_background_color">#FEBB20</color>
+
+</resources>
