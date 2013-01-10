@@ -11,14 +11,14 @@ Based on the DirectoryChooser from the excellent
 Dependencies
 ------------
 
-* Roboguice (but should work with any other JSR-330 complient container)
+ * Roboguice (but should work with any other JSR-330 complient container)
 
 Roadmap
 -------
 
-* 1.0: Synchronous directory chooser, documentation, good test coverage
-* 1.1: pre-ICS support with RoboSherlock
-* 2.0: Asynchronous directory chooser
+ * 1.0: Synchronous directory chooser, documentation, good test coverage
+ * 1.1: pre-ICS support with RoboSherlock
+ * 2.0: Asynchronous directory chooser
 
 Usage
 -----
