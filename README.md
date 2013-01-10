@@ -3,6 +3,10 @@ Android DirChooser
 
 A simple directory chooser you can integrate into your Android app.
 
+This version of the library has no additional dependencies, but requires Android
+v11+ to work. There is, however, [a v11-brach][2] that supports down to v7 using
+ActionBarSherlock.
+
 Based on the DirectoryChooser from the excellent
 [AntennaPod App](https://github.com/danieloeh/AntennaPod) by danieloeh.
 
@@ -91,3 +95,4 @@ limitations under the License.
 ```
 
  [1]: https://raw.github.com/passy/Android-DirectoryChooser/master/media/screenshot_phone.png
+ [2]: https://github.com/passy/Android-DirectoryChooser/pre-v11
