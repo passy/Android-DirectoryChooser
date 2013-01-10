@@ -35,7 +35,7 @@ import android.widget.Toast;
  * will be sent back to the starting activity as an activity result.
  */
 public class DirectoryChooserActivity extends RoboActivity {
-    public static final String EXTRA_DIRECTORY_NAME = "directory_name";
+    public static final String EXTRA_NEW_DIR_NAME = "directory_name";
     public static final String RESULT_SELECTED_DIR = "selected_dir";
     public static final int RESULT_CODE_DIR_SELECTED = 1;
 
@@ -61,7 +61,7 @@ public class DirectoryChooserActivity extends RoboActivity {
     private File[] mFilesInDir;
     private FileObserver mFileObserver;
 
-    @InjectExtra(value = EXTRA_DIRECTORY_NAME, optional = true)
+    @InjectExtra(value = EXTRA_NEW_DIR_NAME, optional = true)
     private String mNewDirectoryName;
 
     @Override

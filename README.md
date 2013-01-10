@@ -47,7 +47,7 @@ To choose a directory, start the activity from your app logic:
 final Intent chooserIntent = new Intent(this, DirectoryChooserActivity.class);
 
 // Optional: Allow users to create a new directory with a fixed name.
-chooserIntent.putExtra(DirectoryChooserActivity.EXTRA_DIRECTORY_NAME,
+chooserIntent.putExtra(DirectoryChooserActivity.EXTRA_NEW_DIR_NAME,
                        "DirChooserSample");
 
 // REQUEST_DIRECTORY is a constant integer to identify the request, e.g. 0

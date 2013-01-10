@@ -33,7 +33,7 @@ public class DirChooserSample extends Activity {
                                 DirectoryChooserActivity.class);
 
                         chooserIntent.putExtra(
-                                DirectoryChooserActivity.EXTRA_DIRECTORY_NAME,
+                                DirectoryChooserActivity.EXTRA_NEW_DIR_NAME,
                                 "DirChooserSample");
 
                         startActivityForResult(chooserIntent, REQUEST_DIRECTORY);
