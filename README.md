@@ -99,5 +99,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
+Thanks
+------
+
+Sample App icon by [Frank Souza](http://franksouza183.deviantart.com/).
+
  [1]: https://raw.github.com/passy/Android-DirectoryChooser/master/media/screenshot_phone.png
  [2]: https://github.com/passy/Android-DirectoryChooser/tree/pre-v11
