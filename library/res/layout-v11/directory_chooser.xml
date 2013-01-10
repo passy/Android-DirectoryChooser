@@ -3,28 +3,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/footer"
-        style="@android:style/ButtonBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal" >
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true" >
 
-        <Button
-            android:id="@+id/btnConfirm"
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/confirm_label" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_alignParentTop="true"
+            android:background="?android:attr/dividerVertical" />
+
+        <View
+            android:id="@+id/horizontalDivider"
+            android:layout_width="1dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:background="?android:attr/dividerVertical" />
 
         <Button
             android:id="@+id/btnCancel"
-            android:layout_width="0px"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/horizontalDivider"
+            android:background="?android:attr/selectableItemBackground"
             android:text="@string/cancel_label" />
-    </LinearLayout>
+
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/horizontalDivider"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/confirm_label" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/directoryInfo"
@@ -38,8 +60,8 @@
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:contentDescription="@string/up_label"
             android:background="@drawable/borderless_button"
+            android:contentDescription="@string/up_label"
             android:src="@drawable/navigation_up" />
 
         <TextView
