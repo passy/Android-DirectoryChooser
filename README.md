@@ -12,11 +12,6 @@ Based on the DirectoryChooser from the excellent
 
 ![DirectoryChooser Sample Screenshot][1]
 
-Dependencies
-------------
-
- * Roboguice (but should work with any other JSR-330 complient container)
-
 Roadmap
 -------
 
