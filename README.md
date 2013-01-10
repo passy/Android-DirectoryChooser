@@ -16,8 +16,7 @@ Dependencies
 Roadmap
 -------
 
- * 1.0: Published to Maven Central
- * 1.1: pre-ICS support with RoboSherlock
+ * 1.0: Publish to Maven Central
  * 2.0: Asynchronous directory chooser
 
 Usage
