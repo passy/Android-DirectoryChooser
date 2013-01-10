@@ -1,5 +1,5 @@
-Android DirChooser
-==================
+Android DirectoryChooser
+========================
 
 A simple directory chooser you can integrate into your Android app.
 
@@ -10,7 +10,7 @@ ActionBarSherlock.
 Based on the DirectoryChooser from the excellent
 [AntennaPod App](https://github.com/danieloeh/AntennaPod) by danieloeh.
 
-![DirChooser Sample Screenshot][1]
+![DirectoryChooser Sample Screenshot][1]
 
 Dependencies
 ------------
