@@ -7,6 +7,10 @@ This version of the library has no additional dependencies, but requires Android
 v11+ to work. There is, however, [a v11-brach][2] that supports down to v7 using
 ActionBarSherlock.
 
+You can download the sample app from the Play Store:
+
+[![Download from Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_45.png)][3]
+
 Based on the DirectoryChooser from the excellent
 [AntennaPod App](https://github.com/danieloeh/AntennaPod) by danieloeh.
 
@@ -106,3 +110,4 @@ Sample App icon by [Frank Souza](http://franksouza183.deviantart.com/).
 
  [1]: https://raw.github.com/passy/Android-DirectoryChooser/master/media/screenshot_phone.png
  [2]: https://github.com/passy/Android-DirectoryChooser/tree/pre-v11
+ [3]: https://play.google.com/store/apps/details?id=net.rdrei.android.dirchooser.sample
