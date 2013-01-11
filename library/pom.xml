@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>library</artifactId>
-	<name>Android-DirChooser</name>
+	<name>Android-DirectoryChooser</name>
 	<packaging>apklib</packaging>
 
 	<parent>

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>sample</artifactId>
-	<name>Android-DirChooser Sample</name>
+	<name>Android-DirectoryChooser Sample</name>
 	<packaging>apk</packaging>
 
 	<parent>

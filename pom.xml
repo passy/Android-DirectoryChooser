@@ -14,9 +14,9 @@
 	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>Android-DirChooser (Parent)</name>
+	<name>Android-DirectoryChooser (Parent)</name>
 	<description>Android library for choosing a directory.</description>
-	<url>https://github.com/passy/Android-DirChooser</url>
+	<url>https://github.com/passy/Android-DirectoryChooser</url>
 	<inceptionYear>2013</inceptionYear>
 
 	<modules>
@@ -25,9 +25,9 @@
 	</modules>
 
 	<scm>
-		<url>https://github.com/passy/Android-DirChooser/</url>
-		<connection>scm:git:git://github.com/passy/Android-DirChooser.git</connection>
-		<developerConnection>scm:git:git@github.com:passy/Android-DirChooser.git</developerConnection>
+		<url>https://github.com/passy/Android-DirectoryChooser/</url>
+		<connection>scm:git:git://github.com/passy/Android-DirectoryChooser.git</connection>
+		<developerConnection>scm:git:git@github.com:passy/Android-DirectoryChooser.git</developerConnection>
 	</scm>
 
 	<developers>
@@ -53,7 +53,7 @@
 
 	<issueManagement>
 		<system>GitHub Issues</system>
-		<url>https://github.com/passy/Android-DirChooser/issues</url>
+		<url>https://github.com/passy/Android-DirectoryChooser/issues</url>
 	</issueManagement>
 
 	<properties>
