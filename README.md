@@ -38,6 +38,23 @@ Import the project into your favorite IDE and add
 `android.library.reference.1=/path/to/Android-DirectoryChooser/library` to your
 `project.properties`.
 
+#### Maven
+
+The library is also awailable on Sonatype:
+
+*Snapshot*
+
+    <dependency>
+      <groupId>net.rdrei.android.dirchooser</groupId>
+      <artifactId>library</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <type>apklib</type>
+    </dependency>
+    
+*Release*
+
+(not yet released)
+
 ### Manifest
 
 You need to declare the `DirectoryChooserActivity` and request the
