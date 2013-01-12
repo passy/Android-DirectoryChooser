@@ -33,7 +33,7 @@ For a full example see the `sample` app in the
 Check out this repository and add it as a library project.
 
     git checkout https://github.com/passy/Android-DirectoryChooser.git
-    
+
 Import the project into your favorite IDE and add
 `android.library.reference.1=/path/to/Android-DirectoryChooser/library` to your
 `project.properties`.
@@ -42,16 +42,23 @@ Import the project into your favorite IDE and add
 
 The library is also awailable on Sonatype:
 
+*Release*
+
+    <dependency>
+      <groupId>net.rdrei.android.dirchooser</groupId>
+      <artifactId>library</artifactId>
+      <version>0.1</version>
+      <type>apklib</type>
+    </dependency>
+
 *Snapshot*
 
     <dependency>
       <groupId>net.rdrei.android.dirchooser</groupId>
       <artifactId>library</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0-SNAPSHOT</version>
       <type>apklib</type>
     </dependency>
-    
-*Release*
 
 (not yet released)
 
