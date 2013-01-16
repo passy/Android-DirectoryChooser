@@ -47,7 +47,7 @@ The library is also awailable on Sonatype:
     <dependency>
       <groupId>net.rdrei.android.dirchooser</groupId>
       <artifactId>library</artifactId>
-      <version>0.1</version>
+      <version>1.0</version>
       <type>apklib</type>
     </dependency>
 
@@ -56,11 +56,9 @@ The library is also awailable on Sonatype:
     <dependency>
       <groupId>net.rdrei.android.dirchooser</groupId>
       <artifactId>library</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.1-SNAPSHOT</version>
       <type>apklib</type>
     </dependency>
-
-(not yet released)
 
 ### Manifest
 
