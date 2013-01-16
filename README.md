@@ -108,6 +108,23 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
+Apps using this
+---------------
+
+<table>
+    <tr>
+        <td>
+            <a href="https://play.google.com/store/apps/details?id=net.rdrei.android.scdl2">
+                <img src="https://dl.dropbox.com/u/140829/blog_pictures/scdl2.png"
+                    title="Downloader for SoundCloud"
+                    alt="Downloader for SoundCloud">
+            </a>
+        </td>
+    </tr>
+</table>
+
+To add your own app, please send a pull request.
+
 License
 -------
 
