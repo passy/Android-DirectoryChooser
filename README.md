@@ -4,8 +4,8 @@ Android DirectoryChooser
 A simple directory chooser you can integrate into your Android app.
 
 This version of the library has no additional dependencies, but requires Android
-v11+ to work. There is, however, [a v11-brach][2] that supports down to v7 using
-ActionBarSherlock.
+v11+ to work. There is, however, [a pre-v11-branch][2] that supports down to v7
+using ActionBarSherlock.
 
 You can download the sample app from the Play Store:
 
@@ -19,8 +19,8 @@ Based on the DirectoryChooser from the excellent
 Roadmap
 -------
 
- * 1.0: Publish to Maven Central
  * 2.0: Asynchronous directory chooser
+ * 3.0: Fragment-based alternative
 
 Usage
 -----
@@ -42,9 +42,10 @@ Import the project into your favorite IDE and add
 
 #### Maven
 
-The library is also awailable on Sonatype:
+Library releases are available on Maven Central, snapshots can be retrieved
+from Sonatype:
 
-*Release*
+*Release (SDK 11+)*
 
 ```xml
 <dependency>
@@ -55,13 +56,35 @@ The library is also awailable on Sonatype:
 </dependency>
 ```
 
-*Snapshot*
+*Release (SDK 7+)*
+
+```xml
+<dependency>
+  <groupId>net.rdrei.android.dirchooser</groupId>
+  <artifactId>library</artifactId>
+  <version>1.0-pre-v11</version>
+  <type>apklib</type>
+</dependency>
+```
+
+*Snapshot (SDK 11+)*
 
 ```xml
 <dependency>
   <groupId>net.rdrei.android.dirchooser</groupId>
   <artifactId>library</artifactId>
   <version>1.1-SNAPSHOT</version>
+  <type>apklib</type>
+</dependency>
+```
+
+*Snapshot (SDK 7+)*
+
+```xml
+<dependency>
+  <groupId>net.rdrei.android.dirchooser</groupId>
+  <artifactId>library</artifactId>
+  <version>1.1-pre-v11-SNAPSHOT</version>
   <type>apklib</type>
 </dependency>
 ```
