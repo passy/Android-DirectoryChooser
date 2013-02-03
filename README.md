@@ -19,8 +19,7 @@ Based on the DirectoryChooser from the excellent
 Roadmap
 -------
 
- * 2.0: Asynchronous directory chooser
- * 3.0: Fragment-based alternative
+ * 2.0: Fragment-based alternative
 
 Usage
 -----
