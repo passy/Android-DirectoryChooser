@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 0.0.1 *(to be determined)*
-----------------------------------
+Version 1.0 (2013-01-16)
+------------------------
 
  * Initial Release
