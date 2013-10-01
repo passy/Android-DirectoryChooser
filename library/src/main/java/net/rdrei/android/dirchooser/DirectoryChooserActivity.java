@@ -35,6 +35,15 @@ import com.actionbarsherlock.view.MenuItem;
  */
 public class DirectoryChooserActivity extends SherlockActivity {
     public static final String EXTRA_NEW_DIR_NAME = "directory_name";
+    
+	/**
+	 * Extra to define the path of the directory that will be shown first. 
+	 * If it is not sent or if path denotes a non readable/writable directory
+	 * or it is not a directory, it defaults to 
+	 * {@link android.os.Environment#getExternalStorageDirectory()}
+	 */
+	public static final String EXTRA_INITIAL_DIRECTORY = "initial_directory";
+	
     public static final String RESULT_SELECTED_DIR = "selected_dir";
     public static final int RESULT_CODE_DIR_SELECTED = 1;
 
@@ -121,7 +130,11 @@ public class DirectoryChooserActivity extends SherlockActivity {
         mListDirectoriesAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, mFilenames);
         mListDirectories.setAdapter(mListDirectoriesAdapter);
-        changeDirectory(Environment.getExternalStorageDirectory());
+        
+        String initialDirectoryPath = getIntent().getStringExtra(EXTRA_INITIAL_DIRECTORY);
+        File initialDir = (initialDirectoryPath != null && isValidFile(new File(initialDirectoryPath))) ? new File(initialDirectoryPath) : Environment.getExternalStorageDirectory();
+        
+        changeDirectory(initialDir);
     }
 
     /* package */void setupActionBar() {
