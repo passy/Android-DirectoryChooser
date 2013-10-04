@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="cancel_label">Cancelar</string>
+    <string name="confirm_label">Confirmar</string>
+    <string name="selected_folder_label">Carpeta elegida:</string>
+    <string name="create_folder_label">Crear carpeta</string>
+    <string name="create_folder_msg">¿Crear carpeta "%1$s"?</string>
+    <string name="create_folder_success">Carpeta creada</string>
+    <string name="create_folder_error_no_write_access">No se puede escribir en esta carpeta</string>
+    <string name="create_folder_error_already_exists">La carpeta ya existe</string>
+    <string name="create_folder_error">No se pudo crear la carpeta</string>
+    <string name="up_label">Atrás</string>
+
+</resources>
