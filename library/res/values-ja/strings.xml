@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="cancel_label">キャンセル</string>
+    <string name="confirm_label">決定</string>
+    <string name="selected_folder_label">選択フォルダ</string>
+    <string name="create_folder_label">フォルダ作成</string>
+    <string name="create_folder_msg">フォルダ \"%1$s\" を作成しますか?</string>
+    <string name="create_folder_success">フォルダを作成しました</string>
+    <string name="create_folder_error_no_write_access">フォルダ作成の権限がありません</string>
+    <string name="create_folder_error_already_exists">フォルダは既にに存在します</string>
+    <string name="create_folder_error">フォルダを作成できません</string>
+    <string name="up_label">上へ</string>
+
+</resources>
