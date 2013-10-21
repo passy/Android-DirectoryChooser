@@ -147,6 +147,13 @@ Apps using this
             </a>
         </td>
     </tr>
+    <tr>
+        <td>
+            <a href="https://play.google.com/store/apps/details?id=de.j4velin.wallpaperChanger">
+                Wallpaper Changer
+            </a>
+        </td>
+    </tr>
 </table>
 
 To add your own app, please send a pull request.
