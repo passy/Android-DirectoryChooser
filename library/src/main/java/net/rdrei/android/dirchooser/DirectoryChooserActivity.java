@@ -151,8 +151,9 @@ public class DirectoryChooserActivity extends Activity {
 
     /* package */void setupActionBar() {
     	// there might not be an ActionBar, for example when started in Theme.Holo.Dialog.NoActionBar theme
-    	if (getActionBar() != null)
+    	if (getActionBar() != null) {
         	getActionBar().setDisplayHomeAsUpEnabled(true);
+    	}
     }
 
     private void debug(String message, Object... args) {
