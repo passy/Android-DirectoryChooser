@@ -141,16 +141,18 @@ Apps using this
     <tr>
         <td>
             <a href="https://play.google.com/store/apps/details?id=net.rdrei.android.scdl2">
-                <img src="https://dl.dropbox.com/u/140829/blog_pictures/scdl2.png"
+                <img src="https://lh6.ggpht.com/u6DlMjd2bCJ0OUAcUEe89rlLyg0Hv16x_vDHrCjCgRZCyyoaF4wiDsTDVT4YDxyaSw=w150-rw"
                     title="Downloader for SoundCloud"
                     alt="Downloader for SoundCloud">
+                <div>Downloader for SoundCloud</div>
             </a>
         </td>
-    </tr>
-    <tr>
         <td>
             <a href="https://play.google.com/store/apps/details?id=de.j4velin.wallpaperChanger">
-                Wallpaper Changer
+                <img src="https://lh6.ggpht.com/Sz46BVptRkjMyeOBxaUip66CMhnKk5MYxZZlxkwCXL3_Ue_ITvQ3_cunU1cYI1FPaQ=w150-rw"
+                    title="Wallpaper Changer"
+                    alt="Wallpaper Changer">
+                <div>Wallpaper Changer</div>
             </a>
         </td>
     </tr>
