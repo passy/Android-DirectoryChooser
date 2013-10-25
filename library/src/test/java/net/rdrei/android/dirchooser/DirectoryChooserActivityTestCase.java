@@ -7,7 +7,7 @@ import org.mockito.Mockito;
 
 import android.content.Intent;
 
-import com.xtremelabs.robolectric.RobolectricTestRunner;
+import org.robolectric.RobolectricTestRunner;
 
 @RunWith(RobolectricTestRunner.class)
 public class DirectoryChooserActivityTestCase {

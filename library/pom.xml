@@ -22,7 +22,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.squareup.android</groupId>
+			<groupId>org.robolectric</groupId>
 			<artifactId>robolectric</artifactId>
 			<scope>test</scope>
 		</dependency>
