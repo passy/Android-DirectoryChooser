@@ -35,15 +35,15 @@ import android.widget.Toast;
  */
 public class DirectoryChooserActivity extends Activity {
     public static final String EXTRA_NEW_DIR_NAME = "directory_name";
-    
-	/**
-	 * Extra to define the path of the directory that will be shown first. 
-	 * If it is not sent or if path denotes a non readable/writable directory
-	 * or it is not a directory, it defaults to 
-	 * {@link android.os.Environment#getExternalStorageDirectory()}
-	 */
-	public static final String EXTRA_INITIAL_DIRECTORY = "initial_directory";
-	
+
+    /**
+     * Extra to define the path of the directory that will be shown first.
+     * If it is not sent or if path denotes a non readable/writable directory
+     * or it is not a directory, it defaults to
+     * {@link android.os.Environment#getExternalStorageDirectory()}
+     */
+    public static final String EXTRA_INITIAL_DIRECTORY = "initial_directory";
+
     public static final String RESULT_SELECTED_DIR = "selected_dir";
     public static final int RESULT_CODE_DIR_SELECTED = 1;
 
@@ -142,18 +142,18 @@ public class DirectoryChooserActivity extends Activity {
         mListDirectoriesAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, mFilenames);
         mListDirectories.setAdapter(mListDirectoriesAdapter);
-        
+
         String initialDirectoryPath = getIntent().getStringExtra(EXTRA_INITIAL_DIRECTORY);
         File initialDir = (initialDirectoryPath != null && isValidFile(new File(initialDirectoryPath))) ? new File(initialDirectoryPath) : Environment.getExternalStorageDirectory();
-        
+
         changeDirectory(initialDir);
     }
 
     /* package */void setupActionBar() {
-    	// there might not be an ActionBar, for example when started in Theme.Holo.Dialog.NoActionBar theme
-    	if (getActionBar() != null) {
-        	getActionBar().setDisplayHomeAsUpEnabled(true);
-    	}
+        // there might not be an ActionBar, for example when started in Theme.Holo.Dialog.NoActionBar theme
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     private void debug(String message, Object... args) {
