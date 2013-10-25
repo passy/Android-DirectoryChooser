@@ -160,6 +160,44 @@ Apps using this
 
 To add your own app, please send a pull request.
 
+Releasing
+---------
+
+*Preparation*
+
+To release a new snapshot on Maven Central, add your credentials to
+`~/.me/settings.xml` (you get them from http://oss.sonatype.org):
+
+```xml
+<settings>
+  <servers>
+    <server>
+      <id>sonatype-nexus-snapshots</id>
+      <username>somestring</username>
+      <password>somepassword</password>
+    </server>
+    <server>
+      <id>sonatype-nexus-staging</id>
+      <username>somestring</username>
+      <password>somepassword</password>
+    </server>
+  </servers>
+</settings>
+
+```
+
+*Staging*
+
+To upload a new snapshot, just run gradle, followed by maven deploy:
+
+```
+gradle build && mvn clean deploy
+```
+
+*Release*
+
+I need to figure this one out. After I got some sleep, though.
+
 License
 -------
 
