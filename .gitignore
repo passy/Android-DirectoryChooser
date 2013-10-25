@@ -22,3 +22,7 @@ pom.xml.*
 local.properties
 build.xml
 proguard-project.txt
+
+#Gradle
+library/build
+.gradle
