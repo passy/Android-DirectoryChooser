@@ -19,6 +19,7 @@ Based on the DirectoryChooser from the excellent
 Roadmap
 -------
 
+ * 1.1: Provide AAR packages
  * 2.0: Fragment-based alternative
 
 Usage
@@ -66,7 +67,14 @@ from Sonatype:
 </dependency>
 ```
 
-*Snapshot (SDK 11+)*
+
+*AAR Snapshot (SDK 11+)*
+
+```groovy
+compile 'net.rdrei.android.dirchooser:library:1.1-SNAPSHOT@aar'
+```
+
+*APK Snapshot (SDK 11+)*
 
 ```xml
 <dependency>
