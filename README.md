@@ -204,7 +204,12 @@ gradle build && mvn clean deploy
 
 *Release*
 
-I need to figure this one out. After I got some sleep, though.
+```
+gradle build
+mvn release:clean
+mvn release:prepare
+mvn release:perform
+```
 
 License
 -------
