@@ -47,16 +47,26 @@ from Sonatype:
 
 *Release (SDK 11+)*
 
+**Groovy**
+
+```groovy
+compile 'net.rdrei.android.dirchooser:library:1.1@aar'
+```
+
+**Maven**
+
 ```xml
 <dependency>
   <groupId>net.rdrei.android.dirchooser</groupId>
   <artifactId>library</artifactId>
-  <version>1.0</version>
-  <type>apklib</type>
+  <version>1.1</version>
+  <type>aar</type>
 </dependency>
 ```
 
 *Release (SDK 7+)*
+
+(There is no official SDK 7+ support onwards from 1.1.)
 
 ```xml
 <dependency>
@@ -209,6 +219,12 @@ gradle build
 mvn release:clean
 mvn release:prepare
 mvn release:perform
+```
+
+Alternatively to the last step:
+
+```
+mvn gpg:sign-and-deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-staging -DpomFile=library/target/library-x.x.pom -Dfile=library/build/libs/library-x.x.aar
 ```
 
 License
