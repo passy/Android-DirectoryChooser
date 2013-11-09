@@ -12,7 +12,7 @@
 	<groupId>net.rdrei.android.dirchooser</groupId>
 	<artifactId>parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.1</version>
 
 	<name>Android-DirectoryChooser (Parent)</name>
 	<description>Android library for choosing a directory.</description>
@@ -28,7 +28,8 @@
 		<url>https://github.com/passy/Android-DirectoryChooser/</url>
 		<connection>scm:git:git://github.com/passy/Android-DirectoryChooser.git</connection>
 		<developerConnection>scm:git:git@github.com:passy/Android-DirectoryChooser.git</developerConnection>
-	</scm>
+	  <tag>v1.1</tag>
+  </scm>
 
 	<developers>
 		<developer>
