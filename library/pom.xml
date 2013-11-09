@@ -66,6 +66,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.8</version>
 				<executions>
 					<execution>
 						<id>attach-artifacts</id>
@@ -76,7 +77,7 @@
 						<configuration>
 							<artifacts>
 								<artifact>
-									<file>build/libs/library-${parent.version}.aar</file>
+									<file>build/libs/library-${project.parent.version}.aar</file>
 									<type>aar</type>
 								</artifact>
 							</artifacts>
