@@ -224,7 +224,7 @@ mvn release:perform
 Alternatively to the last step:
 
 ```
-mvn gpg:sign-and-deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-staging -DpomFile=library/target/library-x.x.pom -Dfile=library/build/libs/library-x.x.aar
+mvn gpg:sign-and-deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-staging -DpomFile=library/target/library-x.x.pom -Dfile=library/build/libs/library-x.x.aar -Dpackaging=aar
 ```
 
 License
