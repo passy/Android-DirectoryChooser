@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="cancel_label">Zrušiť</string>
+    <string name="confirm_label">Potvrdiť</string>
+    <string name="selected_folder_label">Vybraný priečinok:</string>
+    <string name="create_folder_label">Vytvoriť priečinok</string>
+    <string name="create_folder_msg">Vytvoriť nový priečinok s názvom "%1$s"?</string>
+    <string name="create_folder_success">Nový priečinok bol vytvorený</string>
+    <string name="create_folder_error_no_write_access">Nemožno zapisovať do tohto priečinka</string>
+    <string name="create_folder_error_already_exists">Priečinok už existuje</string>
+    <string name="create_folder_error">Nemožno vytvoriť priečinok</string>
+    <string name="up_label">Hore</string>
+
+</resources>
