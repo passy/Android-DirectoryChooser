@@ -1,7 +1,13 @@
 Change Log
 ==========
 
-Version 1.1 (TBD)
+Version 1.2 (2013-12-25)
+------------------------
+
+ * Swedish Translation by @pylerSM
+ * German Translation by @MDXDave
+
+Version 1.1 (2013-11-09)
 ------------------------
 
  * AAR artifact
