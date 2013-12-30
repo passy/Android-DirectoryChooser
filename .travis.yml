@@ -1,1 +1,7 @@
 language: java
+
+install:
+  - TERM=dumb ./gradlew assembleDebug
+
+script:
+  - TERM=dumb ./gradlew testDebug

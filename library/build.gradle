@@ -1,4 +1,11 @@
 apply plugin: 'android-library'
+apply plugin: 'android-test'
+
+repositories {
+  maven {
+    url 'https://oss.sonatype.org/content/repositories/snapshots/'
+  }
+}
 
 dependencies {
   compile 'com.android.support:support-v4:18.0.+'
@@ -15,6 +22,13 @@ android {
       res.srcDirs = ['res']
     }
   }
+
+  dependencies {
+    testCompile 'junit:junit:4.10'
+    testCompile 'org.robolectric:robolectric:2.3-SNAPSHOT'
+    testCompile 'com.squareup:fest-android:1.0.+'
+    testCompile 'org.mockito:mockito-all:1.9.+'
+  }
 }
 
 apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/eaa6b5404b7594e6c23b884fdc5795f545db55dd/gradle-mvn-push.gradle'
@@ -22,7 +36,8 @@ apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/eaa6b5404b7594e6c
 import org.gradle.plugins.signing.Sign
 
 gradle.taskGraph.whenReady { taskGraph ->
-  if (taskGraph.allTasks.any { it instanceof Sign }) {
+  if (taskGraph.allTasks.any { it instanceof Sign } &&
+      'uploadArchives' in gradle.startParameter.taskNames) {
     // Use Java 6's console to read from the console (no good for a CI environment)
     Console console = System.console()
     console.printf "\n\nWe have to sign some things in this build.\n\nPlease enter your signing details.\n\n"
