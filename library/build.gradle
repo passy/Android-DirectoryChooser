@@ -7,10 +7,6 @@ repositories {
   }
 }
 
-dependencies {
-  compile 'com.android.support:support-v4:18.0.+'
-}
-
 android {
   compileSdkVersion 19
   buildToolsVersion '19.0.0'
