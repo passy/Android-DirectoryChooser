@@ -5,12 +5,14 @@ before_install:
   # Install base Android SDK
   - sudo apt-get update -qq
   - sudo apt-get install -qq libstdc++6:i386 lib32z1
-  - export COMPONENTS=build-tools-19.0.0,android-19,sysimg-19,extra-android-support
-  - curl -L https://raw.github.com/embarkmobile/android-sdk-installer/master/android-sdk-installer | bash /dev/stdin --install=$COMPONENTS
+  - export COMPONENTS=build-tools-19.0.0,android-19,extra-android-m2repository,extra-android-support
+  - curl -L https://gist.github.com/passy/8189900/raw/308848e7285d9f037671110052841666920b6e7f/android-sdk-installer.sh | bash /dev/stdin --install=$COMPONENTS
   - source ~/.android-sdk-installer/env
 
 install:
+  - source ~/.android-sdk-installer/env
   - TERM=dumb ./gradlew assembleDebug
 
 script:
+  - source ~/.android-sdk-installer/env
   - TERM=dumb ./gradlew testDebug
