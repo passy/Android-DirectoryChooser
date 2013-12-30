@@ -209,22 +209,15 @@ To release a new snapshot on Maven Central, add your credentials to
 To upload a new snapshot, just run gradle, followed by maven deploy:
 
 ```
-gradle build && mvn clean deploy
+gradle build uploadArchives
 ```
 
 *Release*
 
-```
-gradle build
-mvn release:clean
-mvn release:prepare
-mvn release:perform
-```
-
-Alternatively to the last step:
+Update versions and remove `-SNAPSHOT` suffixes.
 
 ```
-mvn gpg:sign-and-deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-staging -DpomFile=library/target/library-x.x.pom -Dfile=library/build/libs/library-x.x.aar -Dpackaging=aar
+gradle build uploadArchives
 ```
 
 License

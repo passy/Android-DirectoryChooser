@@ -8,11 +8,9 @@ buildscript {
   }
 }
 
-apply plugin: 'android-reporting'
-
 allprojects {
-  group = 'net.rdrei.android.dirchooser'
-  version = '1.2'
+  group = GROUP
+  version = VERSION_NAME
 
   repositories {
     mavenCentral()
@@ -22,3 +20,5 @@ allprojects {
     options.encoding = 'UTF-8'
   }
 }
+
+apply plugin: 'android-reporting'
