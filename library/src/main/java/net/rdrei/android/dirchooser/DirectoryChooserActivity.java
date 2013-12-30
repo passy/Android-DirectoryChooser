@@ -129,7 +129,7 @@ public class DirectoryChooserActivity extends Activity {
         // change up button to light version if using dark theme
         TypedArray backgroundAttributes = getTheme().obtainStyledAttributes(
                 new int[] { android.R.attr.colorBackground });
-        int color = backgroundAttributes.getColor(0, 0xFFFFFF);
+        final int color = backgroundAttributes.getColor(0, 0xFFFFFF);
         backgroundAttributes.recycle();
         // convert to greyscale and check if < 128
         if (color != 0xFFFFFF && 0.21 * Color.red(color) +
@@ -144,7 +144,13 @@ public class DirectoryChooserActivity extends Activity {
         mListDirectories.setAdapter(mListDirectoriesAdapter);
 
         String initialDirectoryPath = getIntent().getStringExtra(EXTRA_INITIAL_DIRECTORY);
-        File initialDir = (initialDirectoryPath != null && isValidFile(new File(initialDirectoryPath))) ? new File(initialDirectoryPath) : Environment.getExternalStorageDirectory();
+        final File initialDir;
+
+        if (initialDirectoryPath != null && isValidFile(new File(initialDirectoryPath))) {
+            initialDir = new File(initialDirectoryPath);
+        } else {
+            initialDir = Environment.getExternalStorageDirectory();
+        }
 
         changeDirectory(initialDir);
     }
