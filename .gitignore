@@ -25,4 +25,5 @@ proguard-project.txt
 
 #Gradle
 library/build
+sample/build
 .gradle
