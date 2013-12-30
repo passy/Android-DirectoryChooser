@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">DirChooserSample</string>
     <string name="directory_selected_label">Directory selected:</string>
+    <string name="choose_directory">Choose Directory</string>
+    <string name="none">none</string>
 </resources>

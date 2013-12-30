@@ -26,3 +26,4 @@ allprojects {
 }
 
 apply plugin: 'android-reporting'
+apply plugin: 'checkstyle'
