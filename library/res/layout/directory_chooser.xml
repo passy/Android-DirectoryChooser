@@ -12,6 +12,7 @@
         android:orientation="horizontal" >
 
         <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/btnConfirm"
             android:layout_width="0px"
             android:layout_height="wrap_content"
@@ -19,6 +20,7 @@
             android:text="@string/confirm_label" />
 
         <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/btnCancel"
             android:layout_width="0px"
             android:layout_height="wrap_content"
