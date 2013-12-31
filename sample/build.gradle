@@ -1,44 +1,48 @@
 apply plugin: 'android'
 
 repositories {
-    mavenCentral()
-    mavenLocal()
+  mavenCentral()
+  mavenLocal()
 }
 
 dependencies {
-    compile project(':library')
+  compile project(':library')
 }
 
 android {
-    compileSdkVersion 19
+  compileSdkVersion 19
     buildToolsVersion '19.0.0'
 
     defaultConfig {
-        versionCode 2
-        versionName '1.1'
-        minSdkVersion 14
-        targetSdkVersion 19
+      versionCode 2
+      versionName '1.1'
+      minSdkVersion 14
+      targetSdkVersion 19
     }
 
-    signingConfigs {
-        release {
-            if ('assembleRelease' in gradle.startParameter.taskNames) {
-                storeFile file(System.getenv('ANDROID_KEYSTORE'))
-                storePassword System.console().readLine('\n\$ Enter store password: ')
-                keyAlias System.getenv('ANDROID_KEY_ALIAS')
-                keyPassword System.console().readLine('\n\$ Enter key password: ')
-            }
-        }
+  signingConfigs {
+    release {
+      if ('assembleRelease' in gradle.startParameter.taskNames) {
+        storeFile file(System.getenv('ANDROID_KEYSTORE'))
+        storePassword System.console().readLine('\n\$ Enter store password: ')
+        keyAlias System.getenv('ANDROID_KEY_ALIAS')
+        keyPassword System.console().readLine('\n\$ Enter key password: ')
+      }
     }
+  }
 
-    buildTypes {
-        release {
-            signingConfig signingConfigs.release
-        }
+  buildTypes {
+    release {
+      signingConfig signingConfigs.release
     }
+  }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_7
+    targetCompatibility JavaVersion.VERSION_1_7
+  }
+
+  lintOptions {
+    abortOnError true
+  }
 }
