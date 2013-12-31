@@ -18,14 +18,21 @@ allprojects {
   group = GROUP
   version = VERSION_NAME
 
-  def androidHome = new File(System.getenv('ANDROID_HOME')).absolutePath
-  def androidRepo = 'file://' + androidHome + '/extras/android/m2repository'
-  def googleRepo = 'file://' + androidHome + '/extras/google/m2repository'
+  def rawAndroidHome = System.getenv('ANDROID_HOME')
+
+  if (rawAndroidHome != null) {
+    def androidHome = new File(rawAndroidHome).absolutePath
+    def androidRepo = 'file://' + androidHome + '/extras/android/m2repository'
+    def googleRepo = 'file://' + androidHome + '/extras/google/m2repository'
+
+    repositories {
+      maven { url androidRepo }
+      maven { url googleRepo }
+    }
+  }
 
   repositories {
     mavenCentral()
-    maven { url androidRepo }
-    maven { url googleRepo }
   }
 
   tasks.withType(Compile) {

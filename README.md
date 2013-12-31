@@ -186,29 +186,20 @@ Releasing
 *Preparation*
 
 To release a new snapshot on Maven Central, add your credentials to
-`~/.me/settings.xml` (you get them from http://oss.sonatype.org):
+`~/.gradle/gradle.properties` (you get them from http://oss.sonatype.org) as
+well as your signing GPG key:
 
-```xml
-<settings>
-  <servers>
-    <server>
-      <id>sonatype-nexus-snapshots</id>
-      <username>somestring</username>
-      <password>somepassword</password>
-    </server>
-    <server>
-      <id>sonatype-nexus-staging</id>
-      <username>somestring</username>
-      <password>somepassword</password>
-    </server>
-  </servers>
-</settings>
+```
+signing.keyId=0x18EEA4AF
+signing.secretKeyRingFile=/home/pascal/.gnupg/secring.gpg
 
+NEXUS_USERNAME=username
+NEXUS_PASSWORD=password
 ```
 
 *Staging*
 
-To upload a new snapshot, just run gradle, followed by maven deploy:
+To upload a new snapshot, just run gradle's `uploadArchives` command:
 
 ```
 gradle build uploadArchives

@@ -1,18 +1,12 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.7.+'
-    }
-}
-
 apply plugin: 'android'
 
 repositories {
     mavenCentral()
     mavenLocal()
+}
+
+dependencies {
+    compile project(':library')
 }
 
 android {
@@ -47,8 +41,4 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
-}
-
-dependencies {
-    compile project(':library')
 }
