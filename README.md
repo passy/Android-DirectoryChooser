@@ -1,6 +1,8 @@
 Android DirectoryChooser
 ========================
 
+[![Build Status](https://travis-ci.org/passy/Android-DirectoryChooser.png?branch=master)](https://travis-ci.org/passy/Android-DirectoryChooser)
+
 A simple directory chooser you can integrate into your Android app.
 
 This version of the library has no additional dependencies, but requires Android
