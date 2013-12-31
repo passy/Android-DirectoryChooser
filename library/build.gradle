@@ -1,5 +1,6 @@
 apply plugin: 'android-library'
 apply plugin: 'android-test'
+apply plugin: 'checkstyle'
 
 repositories {
   maven {
@@ -25,6 +26,11 @@ android {
     testCompile 'com.squareup:fest-android:1.0.+'
     testCompile 'org.mockito:mockito-all:1.9.+'
   }
+}
+
+checkstyle {
+  configFile project.file('../config/checkstyle/checkstyle.xml')
+  showViolations true
 }
 
 apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/eaa6b5404b7594e6c23b884fdc5795f545db55dd/gradle-mvn-push.gradle'
