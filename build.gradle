@@ -12,8 +12,6 @@ buildscript {
   }
 }
 
-apply plugin: 'android-reporting'
-
 allprojects {
   group = GROUP
   version = VERSION_NAME
@@ -39,3 +37,5 @@ allprojects {
     options.encoding = 'UTF-8'
   }
 }
+
+apply plugin: 'android-reporting'
