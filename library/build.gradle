@@ -10,9 +10,12 @@ repositories {
 
 android {
   compileSdkVersion 19
-  buildToolsVersion '19.0.0'
+  buildToolsVersion '19.0.1'
+
 
   dependencies {
+    compile 'com.google.code.findbugs:jsr305:2.0.2'
+
     testCompile 'junit:junit:4.10'
     testCompile 'org.robolectric:robolectric:2.3-SNAPSHOT'
     testCompile 'com.squareup:fest-android:1.0.+'
