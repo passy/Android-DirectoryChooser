@@ -294,8 +294,13 @@ public class DirectoryChooserActivity extends Activity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.new_folder_item).setVisible(
-                isValidFile(mSelectedDir) && mNewDirectoryName != null);
+        final MenuItem menuItem = menu.findItem(R.id.new_folder_item);
+
+        if (menuItem == null) {
+            return false;
+        }
+
+        menuItem.setVisible(isValidFile(mSelectedDir) && mNewDirectoryName != null);
         return true;
     }
 
@@ -374,7 +379,7 @@ public class DirectoryChooserActivity extends Activity {
             } else {
                 return R.string.create_folder_error_already_exists;
             }
-        } else if (mSelectedDir.canWrite() == false) {
+        } else if (mSelectedDir != null && !mSelectedDir.canWrite()) {
             return R.string.create_folder_error_no_write_access;
         } else {
             return R.string.create_folder_error;
