@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -118,7 +119,7 @@ public class DirectoryChooserActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                File parent = null;
+                File parent;
                 if (mSelectedDir != null
                         && (parent = mSelectedDir.getParentFile()) != null) {
                     changeDirectory(parent);
@@ -127,10 +128,19 @@ public class DirectoryChooserActivity extends Activity {
         });
 
         // change up button to light version if using dark theme
-        TypedArray backgroundAttributes = getTheme().obtainStyledAttributes(
-                new int[] { android.R.attr.colorBackground });
-        final int color = backgroundAttributes.getColor(0, 0xFFFFFF);
-        backgroundAttributes.recycle();
+        int color = 0xFFFFFF;
+        final Resources.Theme theme = getTheme();
+
+        if (theme != null) {
+            TypedArray backgroundAttributes = theme.obtainStyledAttributes(
+                    new int[]{android.R.attr.colorBackground});
+
+            if (backgroundAttributes != null) {
+                color = backgroundAttributes.getColor(0, 0xFFFFFF);
+                backgroundAttributes.recycle();
+            }
+        }
+
         // convert to greyscale and check if < 128
         if (color != 0xFFFFFF && 0.21 * Color.red(color) +
                                  0.72 * Color.green(color) +
