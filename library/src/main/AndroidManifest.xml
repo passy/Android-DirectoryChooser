@@ -3,9 +3,4 @@
     package="net.rdrei.android.dirchooser"
     android:versionCode="1"
     android:versionName="0.0.1" >
-
-    <!-- TODO: Let's try to lower this. -->
-    <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="19" />
 </manifest>

@@ -9,9 +9,13 @@ repositories {
 }
 
 android {
-  compileSdkVersion 19
+  compileSdkVersion 18
   buildToolsVersion '19.0.1'
 
+  defaultConfig {
+    minSdkVersion 11
+    targetSdkVersion 18
+  }
 
   dependencies {
     compile 'com.google.code.findbugs:jsr305:2.0.2'
