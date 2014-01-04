@@ -164,6 +164,30 @@ Apps using this
                 <div>Wallpaper Changer</div>
             </a>
         </td>
+        <td>
+            <a href="https://play.google.com/store/apps/details?id=com.xnview.XnRetro">
+                <img src="https://lh4.ggpht.com/KXmixGG4X5gDKcsYNQW8pKN3fhpphpk7IsDCmwX39z0iQUwqjSN4p4PLaQiAXfRP05DL=w150-rw"
+                    title="XnRetro"
+                    alt="XnRetro">
+                <div>XnRetro</div>
+            </a>
+        </td>
+        <td>
+            <a href="https://play.google.com/store/apps/details?id=com.sleepcamel.gwhale">
+                <img src="https://lh5.ggpht.com/_PxlHqCnloJZ8rUlrs9rrJOML266mr8S5oIGfLMhmrSq5Ha3xR1mVh2Fvk_5VU0gjQ=w150-rw"
+                    title="GWhale"
+                    alt="GWhale">
+                <div>GWhale</div>
+            </a>
+        </td>
+        <td>
+            <a href="https://play.google.com/store/apps/details?id=bml.prods.instasave">
+                <img src="https://lh5.ggpht.com/StbO8RsWywEwRQ9sMbyv9j8aXr4h6OnLopnZZofji8JVkIKt4ATpwjOunFLwpWPZWjQ=w150-rw"
+                    title="InstaSave - Instagram Save"
+                    alt="InstaSave - Instagram Save">
+                <div>InstaSave</div>
+            </a>
+        </td>
     </tr>
 </table>
 
