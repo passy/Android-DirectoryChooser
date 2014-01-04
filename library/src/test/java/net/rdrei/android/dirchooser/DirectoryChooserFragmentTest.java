@@ -3,20 +3,15 @@ package net.rdrei.android.dirchooser;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
-import org.fest.assertions.api.android.view.ViewAssert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.junit.Assert.assertEquals;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.shadows.ShadowAlertDialog;
@@ -26,8 +21,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import static org.fest.assertions.api.ANDROID.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 public class DirectoryChooserFragmentTest {
@@ -55,7 +50,8 @@ public class DirectoryChooserFragmentTest {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Test
     public void testWithDirectory() {
-        final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance("mydir", null);
+        final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance("mydir",
+                null);
 
         startFragment(fragment, DirectoryChooserActivityMock.class);
 
@@ -64,13 +60,14 @@ public class DirectoryChooserFragmentTest {
 
         assert chooseBtn.performClick();
 
-        assertNotNull(((DirectoryChooserActivityMock)fragment.getActivity()).selectedDirectory);
+        assertNotNull(((DirectoryChooserActivityMock) fragment.getActivity()).selectedDirectory);
     }
 
     @Test
     public void testCreateDirectoryDialog() {
         final String directoryName = "mydir";
-        final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(directoryName, null);
+        final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(
+                directoryName, null);
 
         startFragment(fragment, DirectoryChooserActivityMock.class);
 
@@ -87,7 +84,8 @@ public class DirectoryChooserFragmentTest {
         assertEquals(shadowAlertDialog.getMessage(), "Create new folder with name \"mydir\"?");
     }
 
-    static final private class DirectoryChooserActivityMock extends Activity implements DirectoryChooserFragment.OnFragmentInteractionListener {
+    static final private class DirectoryChooserActivityMock extends Activity implements
+            DirectoryChooserFragment.OnFragmentInteractionListener {
         public String selectedDirectory;
 
         @Override
