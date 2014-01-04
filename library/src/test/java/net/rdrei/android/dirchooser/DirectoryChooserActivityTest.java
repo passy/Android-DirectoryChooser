@@ -10,7 +10,7 @@ import android.content.Intent;
 import org.robolectric.RobolectricTestRunner;
 
 @RunWith(RobolectricTestRunner.class)
-public class DirectoryChooserActivityTestCase {
+public class DirectoryChooserActivityTest {
     private DirectoryChooserActivity activity;
     private Intent launchIntent;
 
