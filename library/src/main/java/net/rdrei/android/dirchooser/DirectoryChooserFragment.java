@@ -2,7 +2,6 @@ package net.rdrei.android.dirchooser;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -10,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.FileObserver;
+import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -366,7 +366,7 @@ public class DirectoryChooserFragment extends DialogFragment {
         final Activity activity = getActivity();
         if (activity != null && mSelectedDir != null) {
             mBtnConfirm.setEnabled(isValidFile(mSelectedDir));
-            getActivity().invalidateOptionsMenu();
+            getActivity().supportInvalidateOptionsMenu();
         }
     }
 

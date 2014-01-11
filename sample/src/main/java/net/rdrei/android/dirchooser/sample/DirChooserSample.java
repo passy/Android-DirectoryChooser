@@ -1,24 +1,16 @@
 package net.rdrei.android.dirchooser.sample;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.FragmentManager;
-import android.content.DialogInterface;
+import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TextView;
 
 import net.rdrei.android.dirchooser.DirectoryChooserActivity;
-import net.rdrei.android.dirchooser.DirectoryChooserFragment;
 
-public class DirChooserSample extends Activity {
+public class DirChooserSample extends ActionBarActivity {
     private static final int REQUEST_DIRECTORY = 0;
     private static final String TAG = "DirChooserSample";
 
