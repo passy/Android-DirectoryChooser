@@ -1,6 +1,6 @@
 package net.rdrei.android.dirchooser.sample;
 
-import android.app.Activity;
+import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import net.rdrei.android.dirchooser.DirectoryChooserActivity;
 
-public class DirChooserSample extends Activity {
+public class DirChooserSample extends ActionBarActivity {
     private static final int REQUEST_DIRECTORY = 0;
     private static final String TAG = "DirChooserSample";
     private TextView mDirectoryTextView;

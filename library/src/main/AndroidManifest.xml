@@ -3,4 +3,6 @@
     package="net.rdrei.android.dirchooser"
     android:versionCode="1"
     android:versionName="0.0.1" >
+    <application>
+    </application>
 </manifest>
