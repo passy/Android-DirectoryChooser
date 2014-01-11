@@ -9,7 +9,7 @@ android {
     buildToolsVersion '19.0.1'
 
     defaultConfig {
-        minSdkVersion 11
+        minSdkVersion 7
         targetSdkVersion 18
     }
 
@@ -36,7 +36,7 @@ checkstyle {
     showViolations true
 }
 apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/eaa6b5404b7594e6c23b884fdc5795f545db55dd/gradle-mvn-push.gradle'
-import org.gradle.plugins.signing.Sign
+
 gradle.taskGraph.whenReady { taskGraph ->
     if (taskGraph.allTasks.any { it instanceof Sign } &&
             'uploadArchives' in gradle.startParameter.taskNames) {
