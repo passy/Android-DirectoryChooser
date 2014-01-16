@@ -43,12 +43,10 @@ import javax.annotation.Nullable;
  * create an instance of this fragment.
  */
 public class DirectoryChooserFragment extends DialogFragment {
+    public static final String KEY_CURRENT_DIRECTORY = "CURRENT_DIRECTORY";
     private static final String ARG_NEW_DIRECTORY_NAME = "NEW_DIRECTORY_NAME";
     private static final String ARG_INITIAL_DIRECTORY = "INITIAL_DIRECTORY";
-
     private static final String TAG = DirectoryChooserFragment.class.getSimpleName();
-    public static final String KEY_CURRENT_DIRECTORY = "CURRENT_DIRECTORY";
-
     private String mNewDirectoryName;
     private String mInitialDirectory;
 
@@ -57,6 +55,7 @@ public class DirectoryChooserFragment extends DialogFragment {
     private Button mBtnConfirm;
     private Button mBtnCancel;
     private ImageButton mBtnNavUp;
+    private ImageButton mBtnCreateFolder;
     private TextView mTxtvSelectedFolder;
     private ListView mListDirectories;
 
@@ -69,6 +68,10 @@ public class DirectoryChooserFragment extends DialogFragment {
     private File[] mFilesInDir;
     private FileObserver mFileObserver;
 
+
+    public DirectoryChooserFragment() {
+        // Required empty public constructor
+    }
 
     /**
      * Use this factory method to create a new instance of
@@ -93,12 +96,8 @@ public class DirectoryChooserFragment extends DialogFragment {
         return fragment;
     }
 
-    public DirectoryChooserFragment() {
-        // Required empty public constructor
-    }
-
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@Nonnull Bundle outState) {
         super.onSaveInstanceState(outState);
 
         outState.putString(KEY_CURRENT_DIRECTORY, mSelectedDir.getAbsolutePath());
@@ -120,18 +119,24 @@ public class DirectoryChooserFragment extends DialogFragment {
             mInitialDirectory = savedInstanceState.getString(KEY_CURRENT_DIRECTORY);
         }
 
-        setHasOptionsMenu(true);
+        if (this.getShowsDialog()) {
+            setStyle(DialogFragment.STYLE_NO_TITLE, 0);
+        } else {
+            setHasOptionsMenu(true);
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
+        assert getActivity() != null;
         final View view = inflater.inflate(R.layout.directory_chooser, container, false);
 
         mBtnConfirm = (Button) view.findViewById(R.id.btnConfirm);
         mBtnCancel = (Button) view.findViewById(R.id.btnCancel);
         mBtnNavUp = (ImageButton) view.findViewById(R.id.btnNavUp);
+        mBtnCreateFolder = (ImageButton) view.findViewById(R.id.btnCreateFolder);
         mTxtvSelectedFolder = (TextView) view.findViewById(R.id.txtvSelectedFolder);
         mListDirectories = (ListView) view.findViewById(R.id.directoryList);
 
@@ -178,6 +183,37 @@ public class DirectoryChooserFragment extends DialogFragment {
             }
         });
 
+        mBtnCreateFolder.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewFolderDialog();
+            }
+        });
+
+        if (!getShowsDialog()) {
+            mBtnCreateFolder.setVisibility(View.GONE);
+        }
+
+        adjustResourceLightness();
+
+        mFilenames = new ArrayList<>();
+        mListDirectoriesAdapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, mFilenames);
+        mListDirectories.setAdapter(mListDirectoriesAdapter);
+
+        final File initialDir;
+        if (mInitialDirectory != null && isValidFile(new File(mInitialDirectory))) {
+            initialDir = new File(mInitialDirectory);
+        } else {
+            initialDir = Environment.getExternalStorageDirectory();
+        }
+
+        changeDirectory(initialDir);
+
+        return view;
+    }
+
+    private void adjustResourceLightness() {
         // change up button to light version if using dark theme
         int color = 0xFFFFFF;
         final Resources.Theme theme = getActivity().getTheme();
@@ -197,23 +233,8 @@ public class DirectoryChooserFragment extends DialogFragment {
                 0.72 * Color.green(color) +
                 0.07 * Color.blue(color) < 128) {
             mBtnNavUp.setImageResource(R.drawable.navigation_up_light);
+            mBtnCreateFolder.setImageResource(R.drawable.ic_action_create_light);
         }
-
-        mFilenames = new ArrayList<>();
-        mListDirectoriesAdapter = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, mFilenames);
-        mListDirectories.setAdapter(mListDirectoriesAdapter);
-
-        final File initialDir;
-        if (mInitialDirectory != null && isValidFile(new File(mInitialDirectory))) {
-            initialDir = new File(mInitialDirectory);
-        } else {
-            initialDir = Environment.getExternalStorageDirectory();
-        }
-
-        changeDirectory(initialDir);
-
-        return view;
     }
 
     @Override

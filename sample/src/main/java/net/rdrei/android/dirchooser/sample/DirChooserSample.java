@@ -1,27 +1,18 @@
 package net.rdrei.android.dirchooser.sample;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.FragmentManager;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TextView;
 
 import net.rdrei.android.dirchooser.DirectoryChooserActivity;
-import net.rdrei.android.dirchooser.DirectoryChooserFragment;
 
 public class DirChooserSample extends Activity {
     private static final int REQUEST_DIRECTORY = 0;
     private static final String TAG = "DirChooserSample";
-
     private TextView mDirectoryTextView;
 
     /**
@@ -49,6 +40,19 @@ public class DirChooserSample extends Activity {
                                 "DirChooserSample");
 
                         startActivityForResult(chooserIntent, REQUEST_DIRECTORY);
+                    }
+                });
+
+        findViewById(R.id.btnChange)
+                .setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        final Intent fragmentSampleIntent = new Intent(
+                                DirChooserSample.this,
+                                DirChooserFragmentSample.class
+                        );
+
+                        startActivity(fragmentSampleIntent);
                     }
                 });
     }
