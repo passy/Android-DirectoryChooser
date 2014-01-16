@@ -6,23 +6,18 @@ Android DirectoryChooser
 A simple directory chooser you can integrate into your Android app.
 
 This version of the library has no additional dependencies, but requires Android
-v11+ to work. There is, however, [a pre-v11-branch][2] that supports down to v7
+v11+ to work. There is, however, [a pre-v11-branch][3] that supports down to v7
 using ActionBarSherlock.
 
 You can download the sample app from the Play Store:
 
-[![Download from Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_45.png)][3]
+[![Download from Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_45.png)][4]
 
 Based on the DirectoryChooser from the excellent
 [AntennaPod App](https://github.com/danieloeh/AntennaPod) by danieloeh.
 
-![DirectoryChooser Sample Screenshot][1]
-
-Roadmap
--------
-
- * 1.1: Provide AAR packages
- * 2.0: Fragment-based alternative
+![DirectoryChooser Sample Screenshot in an Activity][1]
+![DirectoryChooser Sample Screenshot in a Fragment][2]
 
 Usage
 -----
@@ -250,6 +245,7 @@ Thanks
 
 Sample App icon by [Frank Souza](http://franksouza183.deviantart.com/).
 
- [1]: https://raw.github.com/passy/Android-DirectoryChooser/master/media/screenshot_phone.png
- [2]: https://github.com/passy/Android-DirectoryChooser/tree/pre-v11
- [3]: https://play.google.com/store/apps/details?id=net.rdrei.android.dirchooser.sample
+ [1]: https://raw.github.com/passy/Android-DirectoryChooser/master/media/phone_screenshot_list.png
+ [2]: https://raw.github.com/passy/Android-DirectoryChooser/master/media/phone_screenshot_fragment.png
+ [3]: https://github.com/passy/Android-DirectoryChooser/tree/pre-v11
+ [4]: https://play.google.com/store/apps/details?id=net.rdrei.android.dirchooser.sample
