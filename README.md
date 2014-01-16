@@ -16,8 +16,12 @@ You can download the sample app from the Play Store:
 Based on the DirectoryChooser from the excellent
 [AntennaPod App](https://github.com/danieloeh/AntennaPod) by danieloeh.
 
-![DirectoryChooser Sample Screenshot in an Activity][1]
-![DirectoryChooser Sample Screenshot in a Fragment][2]
+<table>
+<tr>
+<th>As stand-alone Activity<br><img src="media/phone_screenshot_list.png" width="40%"></th>
+<th>As DialogFragment<br><img src="media/phone_screenshot_dialog.png" width="40%"></th>
+</tr>
+</table>
 
 Usage
 -----
@@ -291,6 +295,6 @@ Thanks
 Sample App icon by [Frank Souza](http://franksouza183.deviantart.com/).
 
  [1]: https://raw.github.com/passy/Android-DirectoryChooser/master/media/phone_screenshot_list.png
- [2]: https://raw.github.com/passy/Android-DirectoryChooser/master/media/phone_screenshot_fragment.png
+ [2]: https://raw.github.com/passy/Android-DirectoryChooser/master/media/phone_screenshot_dialog.png
  [3]: https://github.com/passy/Android-DirectoryChooser/tree/pre-v11
  [4]: https://play.google.com/store/apps/details?id=net.rdrei.android.dirchooser.sample
