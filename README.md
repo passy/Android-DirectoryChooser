@@ -110,7 +110,7 @@ You need to declare the `DirectoryChooserActivity` and request the
 `android.permission.WRITE_EXTERNAL_STORAGE` permission.
 
 ```xml
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 ...
 <application>
     <activity android:name="net.rdrei.android.dirchooser.DirectoryChooserActivity" />
