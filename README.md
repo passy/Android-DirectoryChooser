@@ -138,6 +138,51 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
+### Fragment
+
+You can also use the underlying DialogFragment for even better integration.
+Whether you use the Fragment as a Dialog or not is completely up to you. All you
+have to do is implement the `OnFragmentInteractionListener` interface to respond
+to the events that a directory is selected or the user cancels the dialog:
+
+```java
+public class DirChooserFragmentSample extends Activity implements
+    DirectoryChooserFragment.OnFragmentInteractionListener {
+
+    private TextView mDirectoryTextView;
+    private DirectoryChooserFragment mDialog;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.dialog);
+        mDialog = DirectoryChooserFragment.newInstance("DialogSample", null);
+
+        mDirectoryTextView = (TextView) findViewById(R.id.textDirectory);
+
+        findViewById(R.id.btnChoose)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mDialog.show(getFragmentManager(), null);
+                    }
+                });
+    }
+
+    @Override
+    public void onSelectDirectory(@Nonnull String path) {
+        mDirectoryTextView.setText(path);
+        mDialog.dismiss();
+    }
+
+    @Override
+    public void onCancelChooser() {
+        mDialog.dismiss();
+    }
+}
+
+```
+
 Apps using this
 ---------------
 
