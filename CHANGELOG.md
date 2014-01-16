@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+Version 2.0 (2014-01-16)
+------------------------
+
+ * Refactoring into Fragment and Activity
+ * Sample now shows how to use a DialogFragment
+ * Better test coverage
+ * Use Build Tools 19
+
 Version 1.2 (2013-12-25)
 ------------------------
 
