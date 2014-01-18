@@ -8,6 +8,15 @@ repositories {
   }
 }
 
+dependencies {
+  compile 'com.google.code.findbugs:jsr305:2.0.2'
+
+  testCompile 'junit:junit:4.10'
+  testCompile 'org.robolectric:robolectric:2.3-SNAPSHOT'
+  testCompile 'com.squareup:fest-android:1.0.+'
+  testCompile 'org.mockito:mockito-all:1.9.+'
+}
+
 android {
   compileSdkVersion 19
   buildToolsVersion '19.0.1'
@@ -15,15 +24,6 @@ android {
   defaultConfig {
     minSdkVersion 11
     targetSdkVersion 18
-  }
-
-  dependencies {
-    compile 'com.google.code.findbugs:jsr305:2.0.2'
-
-    testCompile 'junit:junit:4.10'
-    testCompile 'org.robolectric:robolectric:2.3-SNAPSHOT'
-    testCompile 'com.squareup:fest-android:1.0.+'
-    testCompile 'org.mockito:mockito-all:1.9.+'
   }
 
   lintOptions {
