@@ -67,8 +67,6 @@ compile 'net.rdrei.android.dirchooser:library:2.0@aar'
 
 *Release (SDK 7+)*
 
-(There is no official SDK 7+ support onwards from 1.1.)
-
 **Gradle**
 
 ```groovy
@@ -82,26 +80,20 @@ compile 'net.rdrei.android.dirchooser:library:1.0-pre-v11@aar'
   <groupId>net.rdrei.android.dirchooser</groupId>
   <artifactId>library</artifactId>
   <version>1.0-pre-v11</version>
-  <type>apklib</type>
+  <type>aar</type>
 </dependency>
 ```
 
-
-*AAR Snapshot (SDK 11+)*
+*Snapshot (SDK 11+)*
 
 ```groovy
 compile 'net.rdrei.android.dirchooser:library:2.1-SNAPSHOT@aar'
 ```
 
-*APK Snapshot (SDK 11+)*
+*Snapshot (SDK 4+)*
 
-```xml
-<dependency>
-  <groupId>net.rdrei.android.dirchooser</groupId>
-  <artifactId>library</artifactId>
-  <version>2.1-SNAPSHOT</version>
-  <type>apklib</type>
-</dependency>
+```groovy
+compile 'net.rdrei.android.dirchooser:library:2.0-pre-v11-SNAPSHOT@aar'
 ```
 
 ### Manifest
