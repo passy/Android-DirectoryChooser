@@ -3,27 +3,26 @@ apply plugin: 'android-test'
 apply plugin: 'checkstyle'
 
 repositories {
-  maven {
-    url 'https://oss.sonatype.org/content/repositories/snapshots/'
-  }
 }
 
 dependencies {
   compile 'com.google.code.findbugs:jsr305:2.0.2'
 
+  testCompile files('testlibs/robolectric-2.3-SNAPSHOT-jar-with-dependencies.jar')
+  androidTestProvided files('testlibs/robolectric-2.3-SNAPSHOT-jar-with-dependencies.jar')
+
   testCompile 'junit:junit:4.10'
-  testCompile 'org.robolectric:robolectric:2.3-SNAPSHOT'
   testCompile 'com.squareup:fest-android:1.0.+'
   testCompile 'org.mockito:mockito-all:1.9.+'
 }
 
 android {
   compileSdkVersion 19
-  buildToolsVersion '19.0.1'
+  buildToolsVersion '19.0.3'
 
   defaultConfig {
     minSdkVersion 11
-    targetSdkVersion 18
+    targetSdkVersion 19
   }
 
   lintOptions {
