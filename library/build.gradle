@@ -6,12 +6,12 @@ repositories {
 }
 
 dependencies {
-  compile 'com.google.code.findbugs:jsr305:2.0.2'
+  compile 'com.google.code.findbugs:jsr305:2.0.3'
 
   testCompile files('testlibs/robolectric-2.3-SNAPSHOT-jar-with-dependencies.jar')
   androidTestProvided files('testlibs/robolectric-2.3-SNAPSHOT-jar-with-dependencies.jar')
 
-  testCompile 'junit:junit:4.10'
+  testCompile 'junit:junit:4.11'
   testCompile 'com.squareup:fest-android:1.0.+'
   testCompile 'org.mockito:mockito-all:1.9.+'
 }
