@@ -100,7 +100,9 @@ public class DirectoryChooserFragment extends DialogFragment {
     public void onSaveInstanceState(@Nonnull Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putString(KEY_CURRENT_DIRECTORY, mSelectedDir.getAbsolutePath());
+        if (mSelectedDir != null) {
+            outState.putString(KEY_CURRENT_DIRECTORY, mSelectedDir.getAbsolutePath());
+        }
     }
 
     @Override
