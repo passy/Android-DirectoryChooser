@@ -194,7 +194,7 @@ Apps using this
     <tr>
         <td>
             <a href="https://play.google.com/store/apps/details?id=net.rdrei.android.scdl2">
-                <img src="https://lh6.ggpht.com/u6DlMjd2bCJ0OUAcUEe89rlLyg0Hv16x_vDHrCjCgRZCyyoaF4wiDsTDVT4YDxyaSw=w150-rw"
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/assets/logos/scdl.png"
                     title="Downloader for SoundCloud"
                     alt="Downloader for SoundCloud">
                 <div>Downloader for SoundCloud</div>
@@ -202,7 +202,7 @@ Apps using this
         </td>
         <td>
             <a href="https://play.google.com/store/apps/details?id=de.j4velin.wallpaperChanger">
-                <img src="https://lh6.ggpht.com/Sz46BVptRkjMyeOBxaUip66CMhnKk5MYxZZlxkwCXL3_Ue_ITvQ3_cunU1cYI1FPaQ=w150-rw"
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/assets/logos/wallpaperchanger.png"
                     title="Wallpaper Changer"
                     alt="Wallpaper Changer">
                 <div>Wallpaper Changer</div>
@@ -210,7 +210,7 @@ Apps using this
         </td>
         <td>
             <a href="https://play.google.com/store/apps/details?id=com.xnview.XnRetro">
-                <img src="https://lh4.ggpht.com/KXmixGG4X5gDKcsYNQW8pKN3fhpphpk7IsDCmwX39z0iQUwqjSN4p4PLaQiAXfRP05DL=w150-rw"
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/assets/logos/xnretro.png"
                     title="XnRetro"
                     alt="XnRetro">
                 <div>XnRetro</div>
@@ -218,7 +218,7 @@ Apps using this
         </td>
         <td>
             <a href="https://play.google.com/store/apps/details?id=com.sleepcamel.gwhale">
-                <img src="https://lh5.ggpht.com/_PxlHqCnloJZ8rUlrs9rrJOML266mr8S5oIGfLMhmrSq5Ha3xR1mVh2Fvk_5VU0gjQ=w150-rw"
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/assets/logos/gwhale.png"
                     title="GWhale"
                     alt="GWhale">
                 <div>GWhale</div>
@@ -226,7 +226,7 @@ Apps using this
         </td>
         <td>
             <a href="https://play.google.com/store/apps/details?id=bml.prods.instasave">
-                <img src="https://lh5.ggpht.com/StbO8RsWywEwRQ9sMbyv9j8aXr4h6OnLopnZZofji8JVkIKt4ATpwjOunFLwpWPZWjQ=w150-rw"
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/assets/logos/instasave.png"
                     title="InstaSave - Instagram Save"
                     alt="InstaSave - Instagram Save">
                 <div>InstaSave</div>
