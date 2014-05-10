@@ -10,6 +10,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.FileObserver;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,9 +33,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * Activities that contain this fragment must implement the
@@ -86,7 +85,7 @@ public class DirectoryChooserFragment extends DialogFragment {
      * @return A new instance of fragment DirectoryChooserFragment.
      */
     public static DirectoryChooserFragment newInstance(
-            @Nonnull final String newDirectoryName,
+            @NonNull final String newDirectoryName,
             @Nullable final String initialDirectory) {
         DirectoryChooserFragment fragment = new DirectoryChooserFragment();
         Bundle args = new Bundle();
@@ -97,7 +96,7 @@ public class DirectoryChooserFragment extends DialogFragment {
     }
 
     @Override
-    public void onSaveInstanceState(@Nonnull Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
         if (mSelectedDir != null) {
@@ -487,7 +486,7 @@ public class DirectoryChooserFragment extends DialogFragment {
         /**
          * Triggered when the user successfully selected their destination directory.
          */
-        public void onSelectDirectory(@Nonnull String path);
+        public void onSelectDirectory(@NonNull String path);
 
         /**
          * Advices the activity to remove the current fragment.

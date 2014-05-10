@@ -6,8 +6,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.google.code.findbugs:jsr305:2.0.3'
-
+  compile 'com.android.support:support-annotations:+'
   testCompile files('testlibs/robolectric-2.3-SNAPSHOT-jar-with-dependencies.jar')
   androidTestProvided files('testlibs/robolectric-2.3-SNAPSHOT-jar-with-dependencies.jar')
 

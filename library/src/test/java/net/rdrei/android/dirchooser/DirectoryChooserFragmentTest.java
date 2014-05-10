@@ -16,9 +16,8 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.shadows.ShadowAlertDialog;
 import org.robolectric.shadows.ShadowDialog;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import static org.fest.assertions.api.ANDROID.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -28,7 +27,7 @@ import static org.junit.Assert.assertNotNull;
 public class DirectoryChooserFragmentTest {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static void startFragment(@Nonnull Fragment fragment, @Nullable Class activityClass) {
+    public static void startFragment(@NonNull Fragment fragment, @Nullable Class activityClass) {
         if (activityClass == null) {
             activityClass = Activity.class;
         }
@@ -94,7 +93,7 @@ public class DirectoryChooserFragmentTest {
         }
 
         @Override
-        public void onSelectDirectory(@Nonnull String path) {
+        public void onSelectDirectory(@NonNull String path) {
             this.selectedDirectory = path;
         }
 
