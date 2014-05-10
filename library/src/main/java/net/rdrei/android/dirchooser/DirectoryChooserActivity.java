@@ -1,5 +1,6 @@
 package net.rdrei.android.dirchooser;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -54,7 +55,7 @@ public class DirectoryChooserActivity extends Activity implements
 
     /* package */void setupActionBar() {
         // there might not be an ActionBar, for example when started in Theme.Holo.Dialog.NoActionBar theme
-        final ActionBar actionBar = getActionBar();
+        @SuppressLint("AppCompatMethod") final ActionBar actionBar = getActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
