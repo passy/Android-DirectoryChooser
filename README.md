@@ -259,7 +259,7 @@ NEXUS_PASSWORD=password
 To upload a new snapshot, just run gradle's `uploadArchives` command:
 
 ```
-gradle build uploadArchives
+gradle :library:uploadArchives
 ```
 
 *Release*
@@ -267,7 +267,7 @@ gradle build uploadArchives
 Update versions and remove `-SNAPSHOT` suffixes.
 
 ```
-gradle build uploadArchives
+gradle build :library:uploadArchives
 ```
 
 License

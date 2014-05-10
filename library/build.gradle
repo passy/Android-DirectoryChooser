@@ -45,7 +45,7 @@ import org.gradle.plugins.signing.Sign
 
 gradle.taskGraph.whenReady { taskGraph ->
   if (taskGraph.allTasks.any { it instanceof Sign } &&
-      'uploadArchives' in gradle.startParameter.taskNames) {
+      ':library:uploadArchives' in gradle.startParameter.taskNames) {
     // Use Java 6's console to read from the console (no good for a CI environment)
     Console console = System.console()
     console.printf "\n\nWe have to sign some things in this build.\n\nPlease enter your signing details.\n\n"
