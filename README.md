@@ -34,14 +34,14 @@ For a full example see the `sample` app in the
 Check out this repository and add it as a library project.
 
 ```console
-$ git checkout https://github.com/passy/Android-DirectoryChooser.git
+$ git clone https://github.com/passy/Android-DirectoryChooser.git
 ```
 
 Import the project into your favorite IDE and add
 `android.library.reference.1=/path/to/Android-DirectoryChooser/library` to your
 `project.properties`.
 
-#### Maven
+#### Maven Central
 
 Library releases are available on Maven Central, snapshots can be retrieved
 from Sonatype:
@@ -274,7 +274,7 @@ License
 -------
 
 ```text
-Copyright 2013 Pascal Hartig
+Copyright 2013-2014 Pascal Hartig
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
