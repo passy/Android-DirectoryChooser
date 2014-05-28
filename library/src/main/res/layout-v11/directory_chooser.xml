@@ -82,7 +82,7 @@
             android:layout_below="@id/txtvSelectedFolderLabel"
             android:layout_toRightOf="@id/btnNavUp"
             android:layout_toLeftOf="@+id/btnCreateFolder"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="start"
             android:scrollHorizontally="true"
