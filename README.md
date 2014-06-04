@@ -1,7 +1,8 @@
 Android DirectoryChooser
 ========================
 
-[![Build Status](https://travis-ci.org/passy/Android-DirectoryChooser.png?branch=master)](https://travis-ci.org/passy/Android-DirectoryChooser)
+[![Build Status](http://img.shields.io/travis/passy/Android-DirectoryChooser.svg?style=flat)](https://travis-ci.org/passy/Android-DirectoryChooser)
+[![Gittip](http://img.shields.io/gittip/passy.svg?style=flat)](https://www.gittip.com/passy/)
 
 A simple directory chooser you can integrate into your Android app.
 
