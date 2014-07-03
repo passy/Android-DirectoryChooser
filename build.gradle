@@ -9,5 +9,6 @@ buildscript {
   dependencies {
     classpath 'com.android.tools.build:gradle:0.12.+'
     classpath files('buildlibs/gradle-android-test-plugin-0.12.0-SNAPSHOT.jar')
+    classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.10.+'
   }
 }
