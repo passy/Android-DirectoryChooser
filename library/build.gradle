@@ -7,8 +7,8 @@ repositories {
 
 dependencies {
   compile 'com.android.support:support-annotations:+'
-  testCompile files('testlibs/robolectric-2.3-SNAPSHOT-jar-with-dependencies.jar')
-  androidTestProvided files('testlibs/robolectric-2.3-SNAPSHOT-jar-with-dependencies.jar')
+  testCompile files('testlibs/robolectric-2.4-SNAPSHOT-jar-with-dependencies.jar')
+  androidTestProvided files('testlibs/robolectric-2.4-SNAPSHOT-jar-with-dependencies.jar')
 
   testCompile 'junit:junit:4.11'
   testCompile 'com.squareup:fest-android:1.0.+'
@@ -16,12 +16,12 @@ dependencies {
 }
 
 android {
-  compileSdkVersion 19
-  buildToolsVersion '19.0.3'
+  compileSdkVersion 20
+  buildToolsVersion '20.0.0'
 
   defaultConfig {
     minSdkVersion 11
-    targetSdkVersion 19
+    targetSdkVersion 20
   }
 
   lintOptions {
@@ -39,7 +39,7 @@ checkstyle {
   showViolations true
 }
 
-apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/eaa6b5404b7594e6c23b884fdc5795f545db55dd/gradle-mvn-push.gradle'
+apply from: 'https://raw.githubusercontent.com/robbypond/gradle-mvn-push/b2ed833b2fbd9c42bb89ca089b75e29b653084ad/gradle-mvn-push.gradle'
 
 import org.gradle.plugins.signing.Sign
 

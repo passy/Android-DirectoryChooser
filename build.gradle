@@ -7,35 +7,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:0.9.+'
-    classpath 'com.squareup.gradle:gradle-android-test-plugin:0.9.1-SNAPSHOT'
+    classpath 'com.android.tools.build:gradle:0.12.+'
+    classpath files('buildlibs/gradle-android-test-plugin-0.12.0-SNAPSHOT.jar')
   }
 }
-
-allprojects {
-  group = GROUP
-  version = VERSION_NAME
-
-  def rawAndroidHome = System.getenv('ANDROID_HOME')
-
-  if (rawAndroidHome != null) {
-    def androidHome = new File(rawAndroidHome).absolutePath
-    def androidRepo = 'file://' + androidHome + '/extras/android/m2repository'
-    def googleRepo = 'file://' + androidHome + '/extras/google/m2repository'
-
-    repositories {
-      maven { url androidRepo }
-      maven { url googleRepo }
-    }
-  }
-
-  repositories {
-    mavenCentral()
-  }
-
-  tasks.withType(Compile) {
-    options.encoding = 'UTF-8'
-  }
-}
-
-apply plugin: 'android-reporting'
