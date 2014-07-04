@@ -4,6 +4,8 @@ apply plugin: 'android-test'
 apply plugin: 'checkstyle'
 
 repositories {
+  mavenCentral()
+  mavenLocal()
 }
 
 dependencies {
@@ -17,12 +19,12 @@ dependencies {
 }
 
 android {
-  compileSdkVersion 20
-  buildToolsVersion '20.0.0'
+  compileSdkVersion 19
+  buildToolsVersion '19.1.0'
 
   defaultConfig {
     minSdkVersion 11
-    targetSdkVersion 20
+    targetSdkVersion 19
   }
 
   lintOptions {
