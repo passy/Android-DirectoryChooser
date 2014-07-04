@@ -22,6 +22,7 @@ import android.support.annotation.Nullable;
 import static org.fest.assertions.api.ANDROID.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 public class DirectoryChooserFragmentTest {
@@ -32,7 +33,7 @@ public class DirectoryChooserFragmentTest {
             activityClass = Activity.class;
         }
 
-        Activity activity = Robolectric.buildActivity(activityClass)
+        Activity activity = (Activity) Robolectric.buildActivity(activityClass)
                 .create()
                 .start()
                 .resume()
@@ -57,8 +58,7 @@ public class DirectoryChooserFragmentTest {
         final View chooseBtn = fragment.getActivity().findViewById(R.id.btnConfirm);
         assertThat(chooseBtn).isEnabled();
 
-        assert chooseBtn.performClick();
-
+        assertTrue(chooseBtn.performClick());
         assertNotNull(((DirectoryChooserActivityMock) fragment.getActivity()).selectedDirectory);
     }
 
