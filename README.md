@@ -7,7 +7,7 @@ Android DirectoryChooser
 A simple directory chooser you can integrate into your Android app.
 
 This version of the library has no additional dependencies, but requires Android
-v11+ to work. There is, however, [a pre-v11-branch][3] that supports down to v7
+v14+ to work. There is, however, [a pre-v11-branch][3] that supports down to v7
 using ActionBarSherlock.
 
 You can download the sample app from the Play Store:
