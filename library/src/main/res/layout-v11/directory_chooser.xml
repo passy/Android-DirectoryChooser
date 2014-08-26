@@ -60,7 +60,7 @@
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:background="@drawable/borderless_button"
+            style="?android:attr/borderlessButtonStyle"
             android:contentDescription="@string/up_label"
             android:src="@drawable/navigation_up" />
 
@@ -99,7 +99,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:contentDescription="@string/create_folder_label"
-                android:background="@drawable/borderless_button"
+                style="?android:attr/borderlessButtonStyle"
                 android:src="@drawable/ic_action_create"
                 />
 
