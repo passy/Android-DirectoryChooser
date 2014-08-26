@@ -21,8 +21,8 @@ android {
   buildToolsVersion '19.1.0'
 
   defaultConfig {
-    minSdkVersion 11
-    targetSdkVersion 18
+    minSdkVersion 14
+    targetSdkVersion 19
   }
 
   lintOptions {
