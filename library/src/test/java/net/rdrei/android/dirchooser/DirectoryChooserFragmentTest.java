@@ -83,6 +83,23 @@ public class DirectoryChooserFragmentTest {
         assertEquals(shadowAlertDialog.getMessage(), "Create new folder with name \"mydir\"?");
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    @Test
+    public void testWithCustomListener() {
+        final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance("mydir",
+                null);
+
+        startFragment(fragment, CustomDirectoryChooserActivity.class);
+        final CustomDirectoryChooserListener listener = new CustomDirectoryChooserListener();
+        fragment.setDirectoryChooserListener(listener);
+
+        final View chooseBtn = fragment.getActivity().findViewById(R.id.btnConfirm);
+        assertThat(chooseBtn).isEnabled();
+
+        assertTrue(chooseBtn.performClick());
+        assertNotNull(listener.selectedDirectory);
+    }
+
     static final private class DirectoryChooserActivityMock extends Activity implements
             DirectoryChooserFragment.OnFragmentInteractionListener {
         public String selectedDirectory;
@@ -100,6 +117,28 @@ public class DirectoryChooserFragmentTest {
         @Override
         public void onCancelChooser() {
 
+        }
+    }
+
+    private static class CustomDirectoryChooserActivity extends Activity {
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            setContentView(R.layout.directory_chooser_activity);
+        }
+    }
+
+    private static class CustomDirectoryChooserListener implements
+            DirectoryChooserFragment.OnFragmentInteractionListener {
+        public String selectedDirectory;
+
+        @Override
+        public void onSelectDirectory(@NonNull String path) {
+            selectedDirectory = path;
+        }
+
+        @Override
+        public void onCancelChooser() {
+            selectedDirectory = null;
         }
     }
 }
