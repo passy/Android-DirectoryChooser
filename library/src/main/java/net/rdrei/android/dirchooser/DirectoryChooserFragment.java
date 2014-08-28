@@ -155,7 +155,9 @@ public class DirectoryChooserFragment extends DialogFragment {
 
             @Override
             public void onClick(View v) {
-                mListener.onCancelChooser();
+                if (mListener != null) {
+                    mListener.onCancelChooser();
+                }
             }
         });
 
@@ -241,11 +243,12 @@ public class DirectoryChooserFragment extends DialogFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+        if (mListener != null) {
+            return;
+        }
         try {
             mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
+        } catch (ClassCastException ignore) {
         }
     }
 
@@ -432,9 +435,13 @@ public class DirectoryChooserFragment extends DialogFragment {
     private void returnSelectedFolder() {
         if (mSelectedDir != null) {
             debug("Returning %s as result", mSelectedDir.getAbsolutePath());
-            mListener.onSelectDirectory(mSelectedDir.getAbsolutePath());
+            if (mListener != null) {
+                mListener.onSelectDirectory(mSelectedDir.getAbsolutePath());
+            }
         } else {
-            mListener.onCancelChooser();
+            if (mListener != null) {
+                mListener.onCancelChooser();
+            }
         }
 
     }
@@ -470,6 +477,14 @@ public class DirectoryChooserFragment extends DialogFragment {
     private boolean isValidFile(File file) {
         return (file != null && file.isDirectory() && file.canRead() && file
                 .canWrite());
+    }
+
+    public OnFragmentInteractionListener getDirectoryChooserListener() {
+        return mListener;
+    }
+
+    public void setDirectoryChooserListener(@Nullable OnFragmentInteractionListener listener) {
+        mListener = listener;
     }
 
     /**
