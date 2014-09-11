@@ -1,5 +1,4 @@
-Android DirectoryChooser
-========================
+# Android DirectoryChooser
 
 [![Build Status](http://img.shields.io/travis/passy/Android-DirectoryChooser.svg?style=flat)](https://travis-ci.org/passy/Android-DirectoryChooser)
 [![Gittip](http://img.shields.io/gittip/passy.svg?style=flat)](https://www.gittip.com/passy/)
@@ -24,25 +23,12 @@ Based on the DirectoryChooser from the excellent
 </tr>
 </table>
 
-Usage
------
+## Usage
 
 For a full example see the `sample` app in the
 [repository](https://github.com/passy/Android-DirectoryChooser/tree/master/sample).
 
-### Dependencies
-
-Check out this repository and add it as a library project.
-
-```console
-$ git clone https://github.com/passy/Android-DirectoryChooser.git
-```
-
-Import the project into your favorite IDE and add
-`android.library.reference.1=/path/to/Android-DirectoryChooser/library` to your
-`project.properties`.
-
-#### Maven Central
+### From Maven Central
 
 Library releases are available on Maven Central, snapshots can be retrieved
 from Sonatype:
@@ -96,6 +82,18 @@ compile 'net.rdrei.android.dirchooser:library:2.1-SNAPSHOT@aar'
 ```groovy
 compile 'net.rdrei.android.dirchooser:library:2.1-pre-v11-SNAPSHOT@aar'
 ```
+
+### As Library Project
+
+Alternatively, check out this repository and add it as a library project.
+
+```console
+$ git clone https://github.com/passy/Android-DirectoryChooser.git
+```
+
+Import the project into your favorite IDE and add
+`android.library.reference.1=/path/to/Android-DirectoryChooser/library` to your
+`project.properties`.
 
 ### Manifest
 
@@ -188,8 +186,7 @@ public class DirChooserFragmentSample extends Activity implements
 
 ```
 
-Apps using this
----------------
+## Apps using this
 
 <table>
     <tr>
@@ -238,8 +235,7 @@ Apps using this
 
 To add your own app, please send a pull request.
 
-Releasing
----------
+## Releasing
 
 *Preparation*
 
@@ -271,8 +267,7 @@ Update versions and remove `-SNAPSHOT` suffixes.
 gradle build :library:uploadArchives
 ```
 
-License
--------
+## License
 
 ```text
 Copyright 2013-2014 Pascal Hartig
@@ -290,8 +285,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-Thanks
-------
+## Thanks
 
 Sample App icon by [Frank Souza](http://franksouza183.deviantart.com/).
 
