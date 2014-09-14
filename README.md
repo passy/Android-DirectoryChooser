@@ -192,7 +192,7 @@ public class DirChooserFragmentSample extends Activity implements
     <tr>
         <td>
             <a href="https://play.google.com/store/apps/details?id=net.rdrei.android.scdl2">
-                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/assets/logos/scdl.png"
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/master/assets/logos/scdl.png"
                     title="Downloader for SoundCloud"
                     alt="Downloader for SoundCloud">
                 <div>Downloader for SoundCloud</div>
@@ -200,7 +200,7 @@ public class DirChooserFragmentSample extends Activity implements
         </td>
         <td>
             <a href="https://play.google.com/store/apps/details?id=de.j4velin.wallpaperChanger">
-                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/assets/logos/wallpaperchanger.png"
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/master/assets/logos/wallpaperchanger.png"
                     title="Wallpaper Changer"
                     alt="Wallpaper Changer">
                 <div>Wallpaper Changer</div>
@@ -208,7 +208,7 @@ public class DirChooserFragmentSample extends Activity implements
         </td>
         <td>
             <a href="https://play.google.com/store/apps/details?id=com.xnview.XnRetro">
-                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/assets/logos/xnretro.png"
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/master/assets/logos/xnretro.png"
                     title="XnRetro"
                     alt="XnRetro">
                 <div>XnRetro</div>
@@ -216,7 +216,7 @@ public class DirChooserFragmentSample extends Activity implements
         </td>
         <td>
             <a href="https://play.google.com/store/apps/details?id=com.sleepcamel.gwhale">
-                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/assets/logos/gwhale.png"
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/master/assets/logos/gwhale.png"
                     title="GWhale"
                     alt="GWhale">
                 <div>GWhale</div>
@@ -224,7 +224,7 @@ public class DirChooserFragmentSample extends Activity implements
         </td>
         <td>
             <a href="https://play.google.com/store/apps/details?id=bml.prods.instasave">
-                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/assets/logos/instasave.png"
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/master/assets/logos/instasave.png"
                     title="InstaSave - Instagram Save"
                     alt="InstaSave - Instagram Save">
                 <div>InstaSave</div>
