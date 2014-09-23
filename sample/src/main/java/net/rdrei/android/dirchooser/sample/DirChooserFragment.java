@@ -15,6 +15,8 @@ import net.rdrei.android.dirchooser.DirectoryChooserFragment;
 
 public class DirChooserFragment extends Fragment implements DirectoryChooserFragment.OnFragmentInteractionListener {
 
+    private static final int REQUEST_CODE = 0;
+
     private TextView mDirectoryTextView;
     private DirectoryChooserFragment mDialog;
 
@@ -22,7 +24,9 @@ public class DirChooserFragment extends Fragment implements DirectoryChooserFrag
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDialog = DirectoryChooserFragment.newInstance("DialogSample", null);
-        mDialog.setTargetFragment(this, 0);
+
+        // You must set this Fragment to the Dialog for receiving the callback.
+        mDialog.setTargetFragment(this, REQUEST_CODE);
     }
 
     @Override
