@@ -3,6 +3,7 @@ package net.rdrei.android.dirchooser;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DialogFragment;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -250,7 +251,14 @@ public class DirectoryChooserFragment extends DialogFragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = Option.some((OnFragmentInteractionListener) activity);
+            if (activity instanceof OnFragmentInteractionListener) {
+                mListener = Option.some((OnFragmentInteractionListener) activity);
+            } else {
+                Fragment owner = getTargetFragment();
+                if (owner instanceof OnFragmentInteractionListener) {
+                    mListener = Option.some((OnFragmentInteractionListener) owner);
+                }
+            }
         } catch (ClassCastException ignore) {
         }
     }
