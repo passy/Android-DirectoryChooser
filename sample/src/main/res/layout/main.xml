@@ -34,4 +34,11 @@
             android:layout_marginTop="48dp"
             android:text="@string/btn_switch"/>
 
+    <Button
+        android:id="@+id/btnStartFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/btn_start"/>
+
 </LinearLayout>

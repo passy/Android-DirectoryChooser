@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.rdrei.android.dirchooser.sample">
+    package="net.rdrei.android.dirchooser.sample" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -20,9 +20,13 @@
         </activity>
         <activity
             android:name="net.rdrei.android.dirchooser.sample.DirChooserFragmentSample"
+            android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
-            android:parentActivityName="net.rdrei.android.dirchooser.sample.DirChooserSample"
-            android:configChanges="orientation|screenSize" >
+            android:parentActivityName="net.rdrei.android.dirchooser.sample.DirChooserSample" >
+        </activity>
+        <activity
+            android:name="net.rdrei.android.dirchooser.sample.DirChooserFragmentHolder"
+            android:label="@string/title_activity_dir_chooser_fragment_holder" >
         </activity>
     </application>
 

@@ -7,5 +7,9 @@
     <string name="none">none</string>
     <string name="btn_choose">Choose in Dialog</string>
     <string name="btn_switch">Switch to Dialog Sample</string>
+    <string name="title_start_button">Start picker</string>
+    <string name="title_activity_dir_chooser_fragment_holder">DirChooserFragmentHolder</string>
+    <string name="btn_start">Start Activity with Fragment</string>
+
 
 </resources>
