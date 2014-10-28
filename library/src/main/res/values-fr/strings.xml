@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="cancel_label">Annuler</string>
+  <string name="confirm_label">Valider</string>
+  <string name="create_folder_error">Impossible de créer le dossier</string>
+  <string name="create_folder_error_already_exists">Le dossier existe déjà</string>
+  <string name="create_folder_error_no_write_access">Impossible d\'écrire dans ce dossier</string>
+  <string name="create_folder_label">Créer un dossier</string>
+  <string name="create_folder_msg">Créer le dossier &quot;%1$s&quot; ?</string>
+  <string name="create_folder_success">Créer un nouveau dossier</string>
+  <string name="selected_folder_label">Dossier séléctionné :\u00A0</string>
+  <string name="up_label">Dossier supérieur</string>
+
+</resources>
