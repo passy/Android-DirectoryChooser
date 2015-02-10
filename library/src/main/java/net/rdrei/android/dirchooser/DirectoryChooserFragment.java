@@ -211,7 +211,7 @@ public class DirectoryChooserFragment extends DialogFragment {
         mListDirectories.setAdapter(mListDirectoriesAdapter);
 
         final File initialDir;
-        if (mInitialDirectory != null && isValidFile(new File(mInitialDirectory))) {
+        if (mInitialDirectory != null && new File(mInitialDirectory).exists() && new File(mInitialDirectory).isDirectory()) {
             initialDir = new File(mInitialDirectory);
         } else {
             initialDir = Environment.getExternalStorageDirectory();
