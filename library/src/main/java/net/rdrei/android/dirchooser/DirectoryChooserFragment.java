@@ -48,9 +48,11 @@ public class DirectoryChooserFragment extends DialogFragment {
     public static final String KEY_CURRENT_DIRECTORY = "CURRENT_DIRECTORY";
     private static final String ARG_NEW_DIRECTORY_NAME = "NEW_DIRECTORY_NAME";
     private static final String ARG_INITIAL_DIRECTORY = "INITIAL_DIRECTORY";
+    private static final String ARG_ALLOW_READ_ONLY_DIRECTORY = "ALLOW_READ_ONLY_DIRECTORY";
     private static final String TAG = DirectoryChooserFragment.class.getSimpleName();
     private String mNewDirectoryName;
     private String mInitialDirectory;
+    private Boolean mAllowReadOnlyDirectory;
 
     private Option<OnFragmentInteractionListener> mListener = Option.none();
 
@@ -85,15 +87,20 @@ public class DirectoryChooserFragment extends DialogFragment {
      *                         If it is not sent or if path denotes a non readable/writable directory
      *                         or it is not a directory, it defaults to
      *                         {@link android.os.Environment#getExternalStorageDirectory()}
+     * @param allowReadOnlyDirectory Optional argument to define whether or not the directory chooser
+     *                               allows read-only paths to be chosen. If it is not sent it defaults
+     *                               to false and only directories with read-write access can be chosen.
      * @return A new instance of fragment DirectoryChooserFragment.
      */
     public static DirectoryChooserFragment newInstance(
             @NonNull final String newDirectoryName,
-            @Nullable final String initialDirectory) {
+            @Nullable final String initialDirectory,
+            @Nullable final Boolean allowReadOnlyDirectory) {
         DirectoryChooserFragment fragment = new DirectoryChooserFragment();
         Bundle args = new Bundle();
         args.putString(ARG_NEW_DIRECTORY_NAME, newDirectoryName);
         args.putString(ARG_INITIAL_DIRECTORY, initialDirectory);
+        args.putBoolean(ARG_ALLOW_READ_ONLY_DIRECTORY, allowReadOnlyDirectory);
         fragment.setArguments(args);
         return fragment;
     }
@@ -117,6 +124,7 @@ public class DirectoryChooserFragment extends DialogFragment {
         } else {
             mNewDirectoryName = getArguments().getString(ARG_NEW_DIRECTORY_NAME);
             mInitialDirectory = getArguments().getString(ARG_INITIAL_DIRECTORY);
+            mAllowReadOnlyDirectory = getArguments().getBoolean(ARG_ALLOW_READ_ONLY_DIRECTORY, false);
         }
 
         if (savedInstanceState != null) {
@@ -484,8 +492,8 @@ public class DirectoryChooserFragment extends DialogFragment {
      * Returns true if the selected file or directory would be valid selection.
      */
     private boolean isValidFile(File file) {
-        return (file != null && file.isDirectory() && file.canRead() && file
-                .canWrite());
+        return (file != null && file.isDirectory() && file.canRead() &&
+                (mAllowReadOnlyDirectory || file.canWrite()));
     }
 
     @Nullable
