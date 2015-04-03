@@ -3,6 +3,7 @@
 [![Build Status](http://img.shields.io/travis/passy/Android-DirectoryChooser.svg?style=flat)](https://travis-ci.org/passy/Android-DirectoryChooser)
 [![Gittip](http://img.shields.io/gittip/passy.svg?style=flat)](https://www.gittip.com/passy/)
 ![Maven Central](https://img.shields.io/maven-central/v/net.rdrei.android.dirchooser/library.svg)
+[![Stories in Ready](https://badge.waffle.io/passy/android-directorychooser.svg?label=ready&title=Ready)](http://waffle.io/passy/android-directorychooser)
 
 A simple directory chooser you can integrate into your Android app.
 
