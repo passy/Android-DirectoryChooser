@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-  compile files('libs/support-annotations-21.0.0-rc1.jar')
+  compile 'com.android.support:support-annotations:21.0.3'
   compile 'com.gu:option:1.3'
   androidTestCompile 'org.robolectric:robolectric:2.4+'
   androidTestCompile 'junit:junit:4.11'
@@ -17,8 +17,8 @@ dependencies {
 }
 
 android {
-  compileSdkVersion 21
-  buildToolsVersion '21.1.1'
+  compileSdkVersion 22
+  buildToolsVersion '22.0.1'
 
   defaultConfig {
     minSdkVersion 11
