@@ -19,7 +19,7 @@ public class DirChooserFragmentSample extends Activity implements DirectoryChoos
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog);
-        mDialog = DirectoryChooserFragment.newInstance("DialogSample", null, null);
+        mDialog = DirectoryChooserFragment.newInstance("DialogSample", null);
 
         mDirectoryTextView = (TextView) findViewById(R.id.textDirectory);
 
