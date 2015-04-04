@@ -52,7 +52,7 @@ public class DirectoryChooserFragment extends DialogFragment {
     private static final String TAG = DirectoryChooserFragment.class.getSimpleName();
     private String mNewDirectoryName;
     private String mInitialDirectory;
-    private Boolean mAllowReadOnlyDirectory;
+    private boolean mAllowReadOnlyDirectory;
 
     private Option<OnFragmentInteractionListener> mListener = Option.none();
 
@@ -87,15 +87,15 @@ public class DirectoryChooserFragment extends DialogFragment {
      *                         If it is not sent or if path denotes a non readable/writable directory
      *                         or it is not a directory, it defaults to
      *                         {@link android.os.Environment#getExternalStorageDirectory()}
-     * @param allowReadOnlyDirectory Optional argument to define whether or not the directory chooser
-     *                               allows read-only paths to be chosen. If it is not sent it defaults
-     *                               to false and only directories with read-write access can be chosen.
+     * @param allowReadOnlyDirectory Argument to define whether or not the directory chooser
+     *                               allows read-only paths to be chosen. If it false only
+     *                               directories with read-write access can be chosen.
      * @return A new instance of fragment DirectoryChooserFragment.
      */
     public static DirectoryChooserFragment newInstance(
             @NonNull final String newDirectoryName,
             @Nullable final String initialDirectory,
-            @Nullable final Boolean allowReadOnlyDirectory) {
+            final boolean allowReadOnlyDirectory) {
         DirectoryChooserFragment fragment = new DirectoryChooserFragment();
         Bundle args = new Bundle();
         args.putString(ARG_NEW_DIRECTORY_NAME, newDirectoryName);
@@ -103,6 +103,24 @@ public class DirectoryChooserFragment extends DialogFragment {
         args.putBoolean(ARG_ALLOW_READ_ONLY_DIRECTORY, allowReadOnlyDirectory);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param newDirectoryName Name of the directory to create.
+     * @param initialDirectory Optional argument to define the path of the directory
+     *                         that will be shown first.
+     *                         If it is not sent or if path denotes a non readable/writable directory
+     *                         or it is not a directory, it defaults to
+     *                         {@link android.os.Environment#getExternalStorageDirectory()}
+     * @return A new instance of fragment DirectoryChooserFragment.
+     */
+    public static DirectoryChooserFragment newInstance(
+            @NonNull final String newDirectoryName,
+            @Nullable final String initialDirectory) {
+        return newInstance(newDirectoryName, initialDirectory, false);
     }
 
     @Override
