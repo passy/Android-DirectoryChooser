@@ -40,7 +40,7 @@ public class DirectoryChooserActivity extends Activity implements
 
         final String newDirName = getIntent().getStringExtra(EXTRA_NEW_DIR_NAME);
         final String initialDir = getIntent().getStringExtra(EXTRA_INITIAL_DIRECTORY);
-        final Boolean allowReadOnlyDir = getIntent().getBooleanExtra(EXTRA_ALLOW_READ_ONLY_DIRECTORY, false);
+        final boolean allowReadOnlyDir = getIntent().getBooleanExtra(EXTRA_ALLOW_READ_ONLY_DIRECTORY, false);
 
         if (newDirName == null) {
             throw new IllegalArgumentException(
