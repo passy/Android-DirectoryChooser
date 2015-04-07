@@ -48,7 +48,7 @@ checkstyle {
   showViolations true
 }
 
-apply from: 'https://raw.githubusercontent.com/robbypond/gradle-mvn-push/b2ed833b2fbd9c42bb89ca089b75e29b653084ad/gradle-mvn-push.gradle'
+apply from: 'https://raw.githubusercontent.com/robbypond/gradle-mvn-push/8f35c0555e9c71154c08dfde9397340099f8dc9f/gradle-mvn-push.gradle'
 
 import org.gradle.plugins.signing.Sign
 
