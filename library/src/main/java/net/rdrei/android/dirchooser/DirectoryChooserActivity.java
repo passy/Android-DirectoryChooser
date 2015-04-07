@@ -29,6 +29,8 @@ public class DirectoryChooserActivity extends Activity implements
     public static final String RESULT_SELECTED_DIR = "selected_dir";
     public static final int RESULT_CODE_DIR_SELECTED = 1;
 
+    public static final String EXTRA_ALLOW_READ_ONLY_DIRECTORY = "allow_read_only_directory";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,7 @@ public class DirectoryChooserActivity extends Activity implements
 
         final String newDirName = getIntent().getStringExtra(EXTRA_NEW_DIR_NAME);
         final String initialDir = getIntent().getStringExtra(EXTRA_INITIAL_DIRECTORY);
+        final boolean allowReadOnlyDir = getIntent().getBooleanExtra(EXTRA_ALLOW_READ_ONLY_DIRECTORY, false);
 
         if (newDirName == null) {
             throw new IllegalArgumentException(
@@ -46,7 +49,7 @@ public class DirectoryChooserActivity extends Activity implements
 
         if (savedInstanceState == null) {
             final FragmentManager fragmentManager = getFragmentManager();
-            final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(newDirName, initialDir);
+            final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(newDirName, initialDir, allowReadOnlyDir);
             fragmentManager.beginTransaction()
                     .add(R.id.main, fragment)
                     .commit();
