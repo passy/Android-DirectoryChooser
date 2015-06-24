@@ -55,6 +55,13 @@ public class DirChooserSample extends Activity {
                         startActivity(fragmentSampleIntent);
                     }
                 });
+
+        findViewById(R.id.btnStartFragment).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DirChooserSample.this, DirChooserFragmentHolder.class));
+            }
+        });
     }
 
     @Override
