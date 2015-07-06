@@ -17,6 +17,7 @@ import android.view.MenuItem;
 public class DirectoryChooserActivity extends Activity implements
         DirectoryChooserFragment.OnFragmentInteractionListener {
     public static final String EXTRA_NEW_DIR_NAME = "directory_name";
+    public static final String EXTRA_ALLOW_NEW_DIR_NAME_MODIFICIATION = "allow_directory_name_modification";
 
     /**
      * Extra to define the path of the directory that will be shown first.
@@ -41,6 +42,7 @@ public class DirectoryChooserActivity extends Activity implements
         final String newDirName = getIntent().getStringExtra(EXTRA_NEW_DIR_NAME);
         final String initialDir = getIntent().getStringExtra(EXTRA_INITIAL_DIRECTORY);
         final boolean allowReadOnlyDir = getIntent().getBooleanExtra(EXTRA_ALLOW_READ_ONLY_DIRECTORY, false);
+        final boolean allowNewDirNameModification = getIntent().getBooleanExtra(EXTRA_ALLOW_NEW_DIR_NAME_MODIFICIATION, true);
 
         if (newDirName == null) {
             throw new IllegalArgumentException(
@@ -49,7 +51,8 @@ public class DirectoryChooserActivity extends Activity implements
 
         if (savedInstanceState == null) {
             final FragmentManager fragmentManager = getFragmentManager();
-            final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(newDirName, initialDir, allowReadOnlyDir);
+            final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(newDirName, initialDir,
+                    allowReadOnlyDir, allowNewDirNameModification);
             fragmentManager.beginTransaction()
                     .add(R.id.main, fragment)
                     .commit();
