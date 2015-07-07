@@ -18,6 +18,8 @@ import org.robolectric.shadows.ShadowAlertDialog;
 import org.robolectric.shadows.ShadowDialog;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import static org.fest.assertions.api.ANDROID.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -80,7 +82,16 @@ public class DirectoryChooserFragmentTest {
         final AlertDialog dialog = (AlertDialog) ShadowDialog.getLatestDialog();
         final ShadowAlertDialog shadowAlertDialog = Robolectric.shadowOf(dialog);
         assertEquals(shadowAlertDialog.getTitle(), "Create folder");
-        assertEquals(shadowAlertDialog.getMessage(), "Create new folder with name \"mydir\"?");
+        assertTrue(shadowAlertDialog.isShowing())
+
+        Button positiveBtn = shadowAlertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        assertNotNull(positiveBtn);
+
+        TextView msgView = (TextView) dialog.findViewById(R.id.msgText);
+        assertEquals(msgView.getText().toString(), "Create new folder with name \"mydir\"?");
+
+        EditText editText = (EditText) dialog.findViewById(R.id.editText);
+        assertEquals(editText.getText().toString(), "mydir");
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
