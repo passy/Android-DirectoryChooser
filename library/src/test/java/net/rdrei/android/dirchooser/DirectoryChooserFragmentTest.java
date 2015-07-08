@@ -8,23 +8,24 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.Shadows;
 import org.robolectric.shadows.ShadowAlertDialog;
 import org.robolectric.shadows.ShadowDialog;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import static org.fest.assertions.api.ANDROID.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(RobolectricTestRunner.class)
+@RunWith(RobolectricGradleTestRunner.class)
 public class DirectoryChooserFragmentTest {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -78,7 +79,7 @@ public class DirectoryChooserFragmentTest {
         });
 
         final AlertDialog dialog = (AlertDialog) ShadowDialog.getLatestDialog();
-        final ShadowAlertDialog shadowAlertDialog = Robolectric.shadowOf(dialog);
+        final ShadowAlertDialog shadowAlertDialog = Shadows.shadowOf(dialog);
         assertEquals(shadowAlertDialog.getTitle(), "Create folder");
         assertEquals(shadowAlertDialog.getMessage(), "Create new folder with name \"mydir\"?");
     }
