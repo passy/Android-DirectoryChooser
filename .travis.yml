@@ -1,17 +1,28 @@
 language: android
-jdk: oraclejdk7
-sudo: false
+
+jdk:
+ - oraclejdk8
 
 android:
   components:
+    - extra-android-support
+    - extra-android-m2repository
     - build-tools-22.0.1
     - android-22
-
   licenses:
-    - android-sdk-license-5be876d5
-
-install:
-  - TERM=dumb ./gradlew assembleDebug
+    - '.+'
 
 script:
-  - TERM=dumb ./gradlew testDebug --info
+ - ./gradlew clean assembleDebug
+
+after_success:
+ - ./gradlew testDebug --info
+
+notifications:
+  email: false
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.gradle
