@@ -18,9 +18,6 @@ script:
 after_success:
  - ./gradlew testDebug --info
 
-notifications:
-  email: false
-
 sudo: false
 
 cache:
