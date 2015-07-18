@@ -1,15 +1,14 @@
 package net.rdrei.android.dirchooser;
 
+import android.content.Intent;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
+import org.robolectric.RobolectricGradleTestRunner;
 
-import android.content.Intent;
-
-import org.robolectric.RobolectricTestRunner;
-
-@RunWith(RobolectricTestRunner.class)
+@RunWith(RobolectricGradleTestRunner.class)
 public class DirectoryChooserActivityTest {
     private DirectoryChooserActivity activity;
     private Intent launchIntent;
