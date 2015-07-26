@@ -65,10 +65,10 @@ public class DirectoryChooserFragmentTest {
     }
 
     @Test
-    public void testCreateDirectoryDialog() {
+    public void testCreateDirectoryDialogAllowFolderNameModification() {
         final String directoryName = "mydir";
         final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(
-                directoryName, null);
+                directoryName, null, false, true);
 
         startFragment(fragment, DirectoryChooserActivityMock.class);
 
@@ -91,7 +91,38 @@ public class DirectoryChooserFragmentTest {
         assertEquals(msgView.getText().toString(), "Create new folder with name \"mydir\"?");
 
         EditText editText = (EditText) dialog.findViewById(R.id.editText);
+        assertTrue(editText.getVisibility() == View.VISIBLE)
         assertEquals(editText.getText().toString(), "mydir");
+    }
+
+    @Test
+    public void testCreateDirectoryDialogDisallowFolderNameModification() {
+        final String directoryName = "mydir";
+        final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(
+                directoryName, null, false, false);
+
+        startFragment(fragment, DirectoryChooserActivityMock.class);
+
+        fragment.onOptionsItemSelected(new TestMenuItem() {
+            @Override
+            public int getItemId() {
+                return R.id.new_folder_item;
+            }
+        });
+
+        final AlertDialog dialog = (AlertDialog) ShadowDialog.getLatestDialog();
+        final ShadowAlertDialog shadowAlertDialog = Robolectric.shadowOf(dialog);
+        assertEquals(shadowAlertDialog.getTitle(), "Create folder");
+        assertTrue(shadowAlertDialog.isShowing())
+
+        Button positiveBtn = shadowAlertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        assertNotNull(positiveBtn);
+
+        TextView msgView = (TextView) dialog.findViewById(R.id.msgText);
+        assertEquals(msgView.getText().toString(), "Create new folder with name \"mydir\"?");
+
+        EditText editText = (EditText) dialog.findViewById(R.id.editText);
+        assertTrue(editText.getVisibility() == View.GONE)
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
