@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import net.rdrei.android.dirchooser.DirectoryChooserActivity;
+import net.rdrei.android.dirchooser.DirectoryChooserConfig;
 
 public class DirChooserSample extends Activity {
     private static final int REQUEST_DIRECTORY = 0;
@@ -35,9 +36,15 @@ public class DirChooserSample extends Activity {
                                 DirChooserSample.this,
                                 DirectoryChooserActivity.class);
 
+                        final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
+                                .newDirectoryName("DirChooserSample")
+                                .allowReadOnlyDirectory(true)
+                                .allowNewDirectoryNameModification(true)
+                                .build();
+
                         chooserIntent.putExtra(
-                                DirectoryChooserActivity.EXTRA_NEW_DIR_NAME,
-                                "DirChooserSample");
+                                DirectoryChooserActivity.EXTRA_CONFIG,
+                                config);
 
                         startActivityForResult(chooserIntent, REQUEST_DIRECTORY);
                     }

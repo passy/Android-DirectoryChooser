@@ -53,8 +53,8 @@ public class DirectoryChooserFragmentTest {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Test
     public void testWithDirectory() {
-        final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance("mydir",
-                null);
+        final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(
+                DirectoryChooserConfig.builder().newDirectoryName("mydir").build());
 
         startFragment(fragment, DirectoryChooserActivityMock.class);
 
@@ -69,7 +69,12 @@ public class DirectoryChooserFragmentTest {
     public void testCreateDirectoryDialogAllowFolderNameModification() {
         final String directoryName = "mydir";
         final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(
-                directoryName, null, false, true);
+                DirectoryChooserConfig.builder()
+                        .newDirectoryName(directoryName)
+                        .initialDirectory("")
+                        .allowReadOnlyDirectory(false)
+                        .allowNewDirectoryNameModification(true)
+                        .build());
 
         startFragment(fragment, DirectoryChooserActivityMock.class);
 
@@ -97,7 +102,12 @@ public class DirectoryChooserFragmentTest {
     public void testCreateDirectoryDialogDisallowFolderNameModification() {
         final String directoryName = "mydir";
         final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(
-                directoryName, null, false, false);
+                DirectoryChooserConfig.builder()
+                        .newDirectoryName(directoryName)
+                        .initialDirectory("")
+                        .allowReadOnlyDirectory(false)
+                        .allowNewDirectoryNameModification(false)
+                        .build());
 
         startFragment(fragment, DirectoryChooserActivityMock.class);
 
@@ -123,8 +133,8 @@ public class DirectoryChooserFragmentTest {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Test
     public void testWithCustomListener() {
-        final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance("mydir",
-                null);
+        final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(
+                DirectoryChooserConfig.builder().newDirectoryName("mydir").build());
 
         startFragment(fragment, CustomDirectoryChooserActivity.class);
         final CustomDirectoryChooserListener listener = new CustomDirectoryChooserListener();
