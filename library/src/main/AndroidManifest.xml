@@ -2,8 +2,11 @@
 <manifest
     package="net.rdrei.android.dirchooser"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <application>
-        <meta-data android:name="string"
-                   android:value="string" />
+
+    <application
+        android:theme="@style/DirectoryChooserTheme">
+        <meta-data
+            android:name="string"
+            android:value="string" />
     </application>
 </manifest>
