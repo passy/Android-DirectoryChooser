@@ -1,5 +1,6 @@
 package net.rdrei.android.dirchooser;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DialogFragment;
@@ -372,7 +373,9 @@ public class DirectoryChooserFragment extends DialogFragment {
      * new folder. User can modify provided name, if it was not disallowed.
      */
     private void openNewFolderDialog() {
-        View dialogView = getActivity().getLayoutInflater().inflate(R.layout.dialog_new_folder, null);
+        @SuppressLint("InflateParams")
+        final View dialogView = getActivity().getLayoutInflater().inflate(
+                R.layout.dialog_new_folder, null);
         final TextView msgView = (TextView) dialogView.findViewById(R.id.msgText);
         final EditText editText = (EditText) dialogView.findViewById(R.id.editText);
         editText.setText(mNewDirectoryName);
@@ -600,12 +603,12 @@ public class DirectoryChooserFragment extends DialogFragment {
         /**
          * Triggered when the user successfully selected their destination directory.
          */
-        public void onSelectDirectory(@NonNull String path);
+        void onSelectDirectory(@NonNull String path);
 
         /**
          * Advices the activity to remove the current fragment.
          */
-        public void onCancelChooser();
+        void onCancelChooser();
     }
 
 }
