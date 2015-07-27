@@ -84,13 +84,13 @@ public class DirectoryChooserFragmentTest {
         assertEquals(shadowAlertDialog.getTitle(), "Create folder");
         assertTrue(shadowAlertDialog.isShowing())
 
-        Button positiveBtn = shadowAlertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        final Button positiveBtn = shadowAlertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
         assertNotNull(positiveBtn);
 
-        TextView msgView = (TextView) dialog.findViewById(R.id.msgText);
+        final TextView msgView = (TextView) dialog.findViewById(R.id.msgText);
         assertEquals(msgView.getText().toString(), "Create new folder with name \"mydir\"?");
 
-        EditText editText = (EditText) dialog.findViewById(R.id.editText);
+        final EditText editText = (EditText) dialog.findViewById(R.id.editText);
         assertTrue(editText.getVisibility() == View.VISIBLE)
         assertEquals(editText.getText().toString(), "mydir");
     }
@@ -115,13 +115,13 @@ public class DirectoryChooserFragmentTest {
         assertEquals(shadowAlertDialog.getTitle(), "Create folder");
         assertTrue(shadowAlertDialog.isShowing())
 
-        Button positiveBtn = shadowAlertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        final Button positiveBtn = shadowAlertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
         assertNotNull(positiveBtn);
 
-        TextView msgView = (TextView) dialog.findViewById(R.id.msgText);
+        final TextView msgView = (TextView) dialog.findViewById(R.id.msgText);
         assertEquals(msgView.getText().toString(), "Create new folder with name \"mydir\"?");
 
-        EditText editText = (EditText) dialog.findViewById(R.id.editText);
+        final EditText editText = (EditText) dialog.findViewById(R.id.editText);
         assertTrue(editText.getVisibility() == View.GONE)
     }
 
