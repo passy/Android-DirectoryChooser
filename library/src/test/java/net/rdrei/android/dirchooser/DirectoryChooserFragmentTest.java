@@ -19,6 +19,10 @@ import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.Shadows;
 import org.robolectric.shadows.ShadowAlertDialog;
 import org.robolectric.shadows.ShadowDialog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import static org.fest.assertions.api.ANDROID.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -64,10 +68,10 @@ public class DirectoryChooserFragmentTest {
     }
 
     @Test
-    public void testCreateDirectoryDialog() {
+    public void testCreateDirectoryDialogAllowFolderNameModification() {
         final String directoryName = "mydir";
         final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(
-                directoryName, null);
+                directoryName, null, false, true);
 
         startFragment(fragment, DirectoryChooserActivityMock.class);
 
@@ -81,7 +85,47 @@ public class DirectoryChooserFragmentTest {
         final AlertDialog dialog = (AlertDialog) ShadowDialog.getLatestDialog();
         final ShadowAlertDialog shadowAlertDialog = Shadows.shadowOf(dialog);
         assertEquals(shadowAlertDialog.getTitle(), "Create folder");
-        assertEquals(shadowAlertDialog.getMessage(), "Create new folder with name \"mydir\"?");
+        assertTrue(shadowAlertDialog.isShowing())
+
+        final Button positiveBtn = shadowAlertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        assertNotNull(positiveBtn);
+
+        final TextView msgView = (TextView) dialog.findViewById(R.id.msgText);
+        assertEquals(msgView.getText().toString(), "Create new folder with name \"mydir\"?");
+
+        final EditText editText = (EditText) dialog.findViewById(R.id.editText);
+        assertTrue(editText.getVisibility() == View.VISIBLE)
+        assertEquals(editText.getText().toString(), "mydir");
+    }
+
+    @Test
+    public void testCreateDirectoryDialogDisallowFolderNameModification() {
+        final String directoryName = "mydir";
+        final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(
+                directoryName, null, false, false);
+
+        startFragment(fragment, DirectoryChooserActivityMock.class);
+
+        fragment.onOptionsItemSelected(new TestMenuItem() {
+            @Override
+            public int getItemId() {
+                return R.id.new_folder_item;
+            }
+        });
+
+        final AlertDialog dialog = (AlertDialog) ShadowDialog.getLatestDialog();
+        final ShadowAlertDialog shadowAlertDialog = Robolectric.shadowOf(dialog);
+        assertEquals(shadowAlertDialog.getTitle(), "Create folder");
+        assertTrue(shadowAlertDialog.isShowing())
+
+        final Button positiveBtn = shadowAlertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        assertNotNull(positiveBtn);
+
+        final TextView msgView = (TextView) dialog.findViewById(R.id.msgText);
+        assertEquals(msgView.getText().toString(), "Create new folder with name \"mydir\"?");
+
+        final EditText editText = (EditText) dialog.findViewById(R.id.editText);
+        assertTrue(editText.getVisibility() == View.GONE)
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)

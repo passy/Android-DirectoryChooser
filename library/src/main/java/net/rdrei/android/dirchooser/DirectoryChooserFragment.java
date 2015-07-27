@@ -1,5 +1,6 @@
 package net.rdrei.android.dirchooser;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DialogFragment;
@@ -12,6 +13,8 @@ import android.os.Environment;
 import android.os.FileObserver;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,6 +27,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -49,10 +53,12 @@ public class DirectoryChooserFragment extends DialogFragment {
     private static final String ARG_NEW_DIRECTORY_NAME = "NEW_DIRECTORY_NAME";
     private static final String ARG_INITIAL_DIRECTORY = "INITIAL_DIRECTORY";
     private static final String ARG_ALLOW_READ_ONLY_DIRECTORY = "ALLOW_READ_ONLY_DIRECTORY";
+    private static final String ARG_ALLOW_NEW_DIRECTORY_NAME_MODIFICATION = "ALLOW_NEW_DIRECTORY_NAME_MODIFICATION";
     private static final String TAG = DirectoryChooserFragment.class.getSimpleName();
     private String mNewDirectoryName;
     private String mInitialDirectory;
     private boolean mAllowReadOnlyDirectory;
+    private boolean mAllowNewDirNameModification;
 
     private Option<OnFragmentInteractionListener> mListener = Option.none();
 
@@ -81,7 +87,41 @@ public class DirectoryChooserFragment extends DialogFragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param newDirectoryName Name of the directory to create.
+     * @param newDirectoryName Name of the directory to create. User can change this name when he creates the
+     *                         folder. To avoid this use allowNewDirectoryNameModification argument.
+     * @param initialDirectory Optional argument to define the path of the directory
+     *                         that will be shown first.
+     *                         If it is not sent or if path denotes a non readable/writable directory
+     *                         or it is not a directory, it defaults to
+     *                         {@link android.os.Environment#getExternalStorageDirectory()}
+     * @param allowReadOnlyDirectory Argument to define whether or not the directory chooser
+     *                               allows read-only paths to be chosen. If it false only
+     *                               directories with read-write access can be chosen.
+     * @param allowNewDirectoryNameModification Argument to define whether or not the directory chooser
+     *                               allows modification of provided new directory name.
+     * @return A new instance of fragment DirectoryChooserFragment.
+     */
+    public static DirectoryChooserFragment newInstance(
+            @NonNull final String newDirectoryName,
+            @Nullable final String initialDirectory,
+            final boolean allowReadOnlyDirectory,
+            final boolean allowNewDirectoryNameModification) {
+        final DirectoryChooserFragment fragment = new DirectoryChooserFragment();
+        final Bundle args = new Bundle();
+        args.putString(ARG_NEW_DIRECTORY_NAME, newDirectoryName);
+        args.putString(ARG_INITIAL_DIRECTORY, initialDirectory);
+        args.putBoolean(ARG_ALLOW_READ_ONLY_DIRECTORY, allowReadOnlyDirectory);
+        args.putBoolean(ARG_ALLOW_NEW_DIRECTORY_NAME_MODIFICATION, allowNewDirectoryNameModification);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param newDirectoryName Name of the directory to create. User can change this name when he creates the
+     *                         folder. Use other constructor to avoid this.
      * @param initialDirectory Optional argument to define the path of the directory
      *                         that will be shown first.
      *                         If it is not sent or if path denotes a non readable/writable directory
@@ -96,20 +136,15 @@ public class DirectoryChooserFragment extends DialogFragment {
             @NonNull final String newDirectoryName,
             @Nullable final String initialDirectory,
             final boolean allowReadOnlyDirectory) {
-        DirectoryChooserFragment fragment = new DirectoryChooserFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_NEW_DIRECTORY_NAME, newDirectoryName);
-        args.putString(ARG_INITIAL_DIRECTORY, initialDirectory);
-        args.putBoolean(ARG_ALLOW_READ_ONLY_DIRECTORY, allowReadOnlyDirectory);
-        fragment.setArguments(args);
-        return fragment;
+        return newInstance(newDirectoryName, initialDirectory, allowReadOnlyDirectory, true);
     }
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param newDirectoryName Name of the directory to create.
+     * @param newDirectoryName Name of the directory to create. User can change this name when he creates the
+     *                         folder. Use other constructor to avoid this.
      * @param initialDirectory Optional argument to define the path of the directory
      *                         that will be shown first.
      *                         If it is not sent or if path denotes a non readable/writable directory
@@ -120,11 +155,11 @@ public class DirectoryChooserFragment extends DialogFragment {
     public static DirectoryChooserFragment newInstance(
             @NonNull final String newDirectoryName,
             @Nullable final String initialDirectory) {
-        return newInstance(newDirectoryName, initialDirectory, false);
+        return newInstance(newDirectoryName, initialDirectory, false, true);
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
+    public void onSaveInstanceState(@NonNull final Bundle outState) {
         super.onSaveInstanceState(outState);
 
         if (mSelectedDir != null) {
@@ -133,7 +168,7 @@ public class DirectoryChooserFragment extends DialogFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if (getArguments() == null) {
@@ -143,6 +178,7 @@ public class DirectoryChooserFragment extends DialogFragment {
             mNewDirectoryName = getArguments().getString(ARG_NEW_DIRECTORY_NAME);
             mInitialDirectory = getArguments().getString(ARG_INITIAL_DIRECTORY);
             mAllowReadOnlyDirectory = getArguments().getBoolean(ARG_ALLOW_READ_ONLY_DIRECTORY, false);
+            mAllowNewDirNameModification = getArguments().getBoolean(ARG_ALLOW_NEW_DIRECTORY_NAME_MODIFICATION, true);
         }
 
         if (savedInstanceState != null) {
@@ -154,11 +190,15 @@ public class DirectoryChooserFragment extends DialogFragment {
         } else {
             setHasOptionsMenu(true);
         }
+
+        if (!mAllowNewDirNameModification && mNewDirectoryName != null && mNewDirectoryName.length() == 0)
+            throw new IllegalArgumentException("New directory name must have a strictly positive " +
+                    "length (not zero) when user is not allowed to modify it.");
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
+            final Bundle savedInstanceState) {
 
         assert getActivity() != null;
         final View view = inflater.inflate(R.layout.directory_chooser, container, false);
@@ -173,7 +213,7 @@ public class DirectoryChooserFragment extends DialogFragment {
         mBtnConfirm.setOnClickListener(new OnClickListener() {
 
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 if (isValidFile(mSelectedDir)) {
                     returnSelectedFolder();
                 }
@@ -183,7 +223,7 @@ public class DirectoryChooserFragment extends DialogFragment {
         mBtnCancel.setOnClickListener(new OnClickListener() {
 
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 mListener.foreach(new UnitFunction<OnFragmentInteractionListener>() {
                     @Override
                     public void apply(final OnFragmentInteractionListener f) {
@@ -196,8 +236,8 @@ public class DirectoryChooserFragment extends DialogFragment {
         mListDirectories.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> adapter, View view,
-                    int position, long id) {
+            public void onItemClick(final AdapterView<?> adapter, final View view,
+                    final int position, final long id) {
                 debug("Selected index: %d", position);
                 if (mFilesInDir != null && position >= 0
                         && position < mFilesInDir.length) {
@@ -209,8 +249,8 @@ public class DirectoryChooserFragment extends DialogFragment {
         mBtnNavUp.setOnClickListener(new OnClickListener() {
 
             @Override
-            public void onClick(View v) {
-                File parent;
+            public void onClick(final View v) {
+                final File parent;
                 if (mSelectedDir != null
                         && (parent = mSelectedDir.getParentFile()) != null) {
                     changeDirectory(parent);
@@ -220,7 +260,7 @@ public class DirectoryChooserFragment extends DialogFragment {
 
         mBtnCreateFolder.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 openNewFolderDialog();
             }
         });
@@ -254,7 +294,7 @@ public class DirectoryChooserFragment extends DialogFragment {
         final Resources.Theme theme = getActivity().getTheme();
 
         if (theme != null) {
-            TypedArray backgroundAttributes = theme.obtainStyledAttributes(
+            final TypedArray backgroundAttributes = theme.obtainStyledAttributes(
                     new int[]{android.R.attr.colorBackground});
 
             if (backgroundAttributes != null) {
@@ -273,11 +313,11 @@ public class DirectoryChooserFragment extends DialogFragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(final Activity activity) {
         super.onAttach(activity);
         try {
             mListener = Option.some((OnFragmentInteractionListener) activity);
-        } catch (ClassCastException ignore) {
+        } catch (final ClassCastException ignore) {
         }
     }
 
@@ -304,7 +344,7 @@ public class DirectoryChooserFragment extends DialogFragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
         inflater.inflate(R.menu.directory_chooser, menu);
 
         final MenuItem menuItem = menu.findItem(R.id.new_folder_item);
@@ -317,7 +357,7 @@ public class DirectoryChooserFragment extends DialogFragment {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
         final int itemId = item.getItemId();
 
         if (itemId == R.id.new_folder_item) {
@@ -330,20 +370,25 @@ public class DirectoryChooserFragment extends DialogFragment {
 
     /**
      * Shows a confirmation dialog that asks the user if he wants to create a
-     * new folder.
+     * new folder. User can modify provided name, if it was not disallowed.
      */
     private void openNewFolderDialog() {
-        new AlertDialog.Builder(getActivity())
+        @SuppressLint("InflateParams")
+        final View dialogView = getActivity().getLayoutInflater().inflate(
+                R.layout.dialog_new_folder, null);
+        final TextView msgView = (TextView) dialogView.findViewById(R.id.msgText);
+        final EditText editText = (EditText) dialogView.findViewById(R.id.editText);
+        editText.setText(mNewDirectoryName);
+        msgView.setText(getString(R.string.create_folder_msg, mNewDirectoryName));
+
+        final AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.create_folder_label)
-                .setMessage(
-                        String.format(getString(R.string.create_folder_msg),
-                                mNewDirectoryName))
+                .setView(dialogView)
                 .setNegativeButton(R.string.cancel_label,
                         new DialogInterface.OnClickListener() {
 
                             @Override
-                            public void onClick(DialogInterface dialog,
-                                    int which) {
+                            public void onClick(final DialogInterface dialog, final int which) {
                                 dialog.dismiss();
                             }
                         })
@@ -351,19 +396,40 @@ public class DirectoryChooserFragment extends DialogFragment {
                         new DialogInterface.OnClickListener() {
 
                             @Override
-                            public void onClick(DialogInterface dialog,
-                                    int which) {
+                            public void onClick(final DialogInterface dialog, final int which) {
                                 dialog.dismiss();
-                                int msg = createFolder();
-                                Toast t = Toast.makeText(
-                                        getActivity(), msg,
-                                        Toast.LENGTH_SHORT);
-                                t.show();
+                                mNewDirectoryName = editText.getText().toString();
+                                final int msg = createFolder();
+                                Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
                             }
-                        }).create().show();
+                        })
+                .show();
+
+        alertDialog.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(editText.getText().length() != 0);
+
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(final CharSequence charSequence, final int i, final int i2, final int i3) {
+
+            }
+
+            @Override
+            public void onTextChanged(final CharSequence charSequence, final int i, final int i2, final int i3) {
+                final boolean textNotEmpty = charSequence.length() != 0;
+                alertDialog.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(textNotEmpty);
+                msgView.setText(getString(R.string.create_folder_msg, charSequence.toString()));
+            }
+
+            @Override
+            public void afterTextChanged(final Editable editable) {
+
+            }
+        });
+
+        editText.setVisibility(mAllowNewDirNameModification ? View.VISIBLE : View.GONE);
     }
 
-    private void debug(String message, Object... args) {
+    private void debug(final String message, final Object... args) {
         Log.d(TAG, String.format(message, args));
     }
 
@@ -374,16 +440,16 @@ public class DirectoryChooserFragment extends DialogFragment {
      *            non-null and a directory, otherwise the displayed directory
      *            will not be changed
      */
-    private void changeDirectory(File dir) {
+    private void changeDirectory(final File dir) {
         if (dir == null) {
             debug("Could not change folder: dir was null");
         } else if (!dir.isDirectory()) {
             debug("Could not change folder: dir is no directory");
         } else {
-            File[] contents = dir.listFiles();
+            final File[] contents = dir.listFiles();
             if (contents != null) {
                 int numDirectories = 0;
-                for (File f : contents) {
+                for (final File f : contents) {
                     if (f.isDirectory()) {
                         numDirectories++;
                     }
@@ -436,12 +502,12 @@ public class DirectoryChooserFragment extends DialogFragment {
     /**
      * Sets up a FileObserver to watch the current directory.
      */
-    private FileObserver createFileObserver(String path) {
+    private FileObserver createFileObserver(final String path) {
         return new FileObserver(path, FileObserver.CREATE | FileObserver.DELETE
                 | FileObserver.MOVED_FROM | FileObserver.MOVED_TO) {
 
             @Override
-            public void onEvent(int event, String path) {
+            public void onEvent(final int event, final String path) {
                 debug("FileObserver received event %d", event);
                 final Activity activity = getActivity();
 
@@ -488,9 +554,9 @@ public class DirectoryChooserFragment extends DialogFragment {
     private int createFolder() {
         if (mNewDirectoryName != null && mSelectedDir != null
                 && mSelectedDir.canWrite()) {
-            File newDir = new File(mSelectedDir, mNewDirectoryName);
+            final File newDir = new File(mSelectedDir, mNewDirectoryName);
             if (!newDir.exists()) {
-                boolean result = newDir.mkdir();
+                final boolean result = newDir.mkdir();
                 if (result) {
                     return R.string.create_folder_success;
                 } else {
@@ -509,7 +575,7 @@ public class DirectoryChooserFragment extends DialogFragment {
     /**
      * Returns true if the selected file or directory would be valid selection.
      */
-    private boolean isValidFile(File file) {
+    private boolean isValidFile(final File file) {
         return (file != null && file.isDirectory() && file.canRead() &&
                 (mAllowReadOnlyDirectory || file.canWrite()));
     }
@@ -519,7 +585,7 @@ public class DirectoryChooserFragment extends DialogFragment {
         return mListener.get();
     }
 
-    public void setDirectoryChooserListener(@Nullable OnFragmentInteractionListener listener) {
+    public void setDirectoryChooserListener(@Nullable final OnFragmentInteractionListener listener) {
         mListener = Option.option(listener);
     }
 
@@ -537,12 +603,12 @@ public class DirectoryChooserFragment extends DialogFragment {
         /**
          * Triggered when the user successfully selected their destination directory.
          */
-        public void onSelectDirectory(@NonNull String path);
+        void onSelectDirectory(@NonNull String path);
 
         /**
          * Advices the activity to remove the current fragment.
          */
-        public void onCancelChooser();
+        void onCancelChooser();
     }
 
 }
