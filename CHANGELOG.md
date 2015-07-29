@@ -1,6 +1,22 @@
 Change Log
 ==========
 
+Version 2.2 (TBD)
+-----------------
+
+ * Material update
+ * Update to latest SDK version
+ * Robolectric 3.0
+
+Version 2.1
+-----------
+
+ * Doc fixes
+ * SDK levle bumps
+ * Gradle bumps
+ * Update fixbugs
+ * Correct icon densities
+
 Version 2.0 (2014-01-16)
 ------------------------
 
