@@ -8,8 +8,8 @@ Version 2.2 (TBD)
  * Update to latest SDK version
  * Robolectric 3.0
 
-Version 2.1
------------
+Version 2.1 (2014-05-18)
+------------------------
 
  * Doc fixes
  * SDK levle bumps
