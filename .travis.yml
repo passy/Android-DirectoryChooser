@@ -14,8 +14,6 @@ android:
 
 script:
  - ./gradlew clean assembleDebug
-
-after_success:
  - ./gradlew testDebug --info
 
 sudo: false
