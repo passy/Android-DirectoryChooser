@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,10 +21,6 @@ import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.Shadows;
 import org.robolectric.shadows.ShadowAlertDialog;
 import org.robolectric.shadows.ShadowDialog;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import static org.fest.assertions.api.ANDROID.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -85,17 +83,14 @@ public class DirectoryChooserFragmentTest {
         final AlertDialog dialog = (AlertDialog) ShadowDialog.getLatestDialog();
         final ShadowAlertDialog shadowAlertDialog = Shadows.shadowOf(dialog);
         assertEquals(shadowAlertDialog.getTitle(), "Create folder");
-        assertTrue(shadowAlertDialog.isShowing())
-
-        final Button positiveBtn = shadowAlertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        assertNotNull(positiveBtn);
+        assertTrue(ShadowDialog.getShownDialogs().contains(dialog));
 
         final TextView msgView = (TextView) dialog.findViewById(R.id.msgText);
         assertEquals(msgView.getText().toString(), "Create new folder with name \"mydir\"?");
 
         final EditText editText = (EditText) dialog.findViewById(R.id.editText);
-        assertTrue(editText.getVisibility() == View.VISIBLE)
-        assertEquals(editText.getText().toString(), "mydir");
+        assertThat(editText).isVisible();
+        assertThat(editText).hasTextString(directoryName);
     }
 
     @Test
@@ -114,18 +109,15 @@ public class DirectoryChooserFragmentTest {
         });
 
         final AlertDialog dialog = (AlertDialog) ShadowDialog.getLatestDialog();
-        final ShadowAlertDialog shadowAlertDialog = Robolectric.shadowOf(dialog);
+        final ShadowAlertDialog shadowAlertDialog = Shadows.shadowOf(dialog);
         assertEquals(shadowAlertDialog.getTitle(), "Create folder");
-        assertTrue(shadowAlertDialog.isShowing())
-
-        final Button positiveBtn = shadowAlertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        assertNotNull(positiveBtn);
+        assertTrue(ShadowDialog.getShownDialogs().contains(dialog));
 
         final TextView msgView = (TextView) dialog.findViewById(R.id.msgText);
-        assertEquals(msgView.getText().toString(), "Create new folder with name \"mydir\"?");
+        assertThat(msgView).hasText("Create new folder with name \"mydir\"?");
 
         final EditText editText = (EditText) dialog.findViewById(R.id.editText);
-        assertTrue(editText.getVisibility() == View.GONE)
+        assertThat(editText).isGone();
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -151,6 +143,7 @@ public class DirectoryChooserFragmentTest {
 
         @Override
         public void onCreate(@Nullable Bundle bundle) {
+            super.onCreate(bundle);
             setContentView(R.layout.directory_chooser_activity);
         }
 
@@ -168,6 +161,7 @@ public class DirectoryChooserFragmentTest {
     private static class CustomDirectoryChooserActivity extends Activity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
             setContentView(R.layout.directory_chooser_activity);
         }
     }
