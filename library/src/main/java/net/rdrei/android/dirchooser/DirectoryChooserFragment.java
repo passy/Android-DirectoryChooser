@@ -14,6 +14,7 @@ import android.os.FileObserver;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,15 +51,10 @@ import java.util.Collections;
  */
 public class DirectoryChooserFragment extends DialogFragment {
     public static final String KEY_CURRENT_DIRECTORY = "CURRENT_DIRECTORY";
-    private static final String ARG_NEW_DIRECTORY_NAME = "NEW_DIRECTORY_NAME";
-    private static final String ARG_INITIAL_DIRECTORY = "INITIAL_DIRECTORY";
-    private static final String ARG_ALLOW_READ_ONLY_DIRECTORY = "ALLOW_READ_ONLY_DIRECTORY";
-    private static final String ARG_ALLOW_NEW_DIRECTORY_NAME_MODIFICATION = "ALLOW_NEW_DIRECTORY_NAME_MODIFICATION";
+    private static final String ARG_CONFIG = "CONFIG";
     private static final String TAG = DirectoryChooserFragment.class.getSimpleName();
     private String mNewDirectoryName;
     private String mInitialDirectory;
-    private boolean mAllowReadOnlyDirectory;
-    private boolean mAllowNewDirNameModification;
 
     private Option<OnFragmentInteractionListener> mListener = Option.none();
 
@@ -77,85 +73,24 @@ public class DirectoryChooserFragment extends DialogFragment {
     private File mSelectedDir;
     private File[] mFilesInDir;
     private FileObserver mFileObserver;
-
+    private DirectoryChooserConfig mConfig;
 
     public DirectoryChooserFragment() {
         // Required empty public constructor
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * To create the config, make use of the provided
+     * {@link DirectoryChooserConfig#builder()}.
      *
-     * @param newDirectoryName Name of the directory to create. User can change this name when he creates the
-     *                         folder. To avoid this use allowNewDirectoryNameModification argument.
-     * @param initialDirectory Optional argument to define the path of the directory
-     *                         that will be shown first.
-     *                         If it is not sent or if path denotes a non readable/writable directory
-     *                         or it is not a directory, it defaults to
-     *                         {@link android.os.Environment#getExternalStorageDirectory()}
-     * @param allowReadOnlyDirectory Argument to define whether or not the directory chooser
-     *                               allows read-only paths to be chosen. If it false only
-     *                               directories with read-write access can be chosen.
-     * @param allowNewDirectoryNameModification Argument to define whether or not the directory chooser
-     *                               allows modification of provided new directory name.
-     * @return A new instance of fragment DirectoryChooserFragment.
+     * @return A new instance of DirectoryChooserFragment.
      */
-    public static DirectoryChooserFragment newInstance(
-            @NonNull final String newDirectoryName,
-            @Nullable final String initialDirectory,
-            final boolean allowReadOnlyDirectory,
-            final boolean allowNewDirectoryNameModification) {
+    public static DirectoryChooserFragment newInstance(@NonNull final DirectoryChooserConfig config) {
         final DirectoryChooserFragment fragment = new DirectoryChooserFragment();
         final Bundle args = new Bundle();
-        args.putString(ARG_NEW_DIRECTORY_NAME, newDirectoryName);
-        args.putString(ARG_INITIAL_DIRECTORY, initialDirectory);
-        args.putBoolean(ARG_ALLOW_READ_ONLY_DIRECTORY, allowReadOnlyDirectory);
-        args.putBoolean(ARG_ALLOW_NEW_DIRECTORY_NAME_MODIFICATION, allowNewDirectoryNameModification);
+        args.putParcelable(ARG_CONFIG, config);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param newDirectoryName Name of the directory to create. User can change this name when he creates the
-     *                         folder. Use other constructor to avoid this.
-     * @param initialDirectory Optional argument to define the path of the directory
-     *                         that will be shown first.
-     *                         If it is not sent or if path denotes a non readable/writable directory
-     *                         or it is not a directory, it defaults to
-     *                         {@link android.os.Environment#getExternalStorageDirectory()}
-     * @param allowReadOnlyDirectory Argument to define whether or not the directory chooser
-     *                               allows read-only paths to be chosen. If it false only
-     *                               directories with read-write access can be chosen.
-     * @return A new instance of fragment DirectoryChooserFragment.
-     */
-    public static DirectoryChooserFragment newInstance(
-            @NonNull final String newDirectoryName,
-            @Nullable final String initialDirectory,
-            final boolean allowReadOnlyDirectory) {
-        return newInstance(newDirectoryName, initialDirectory, allowReadOnlyDirectory, true);
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param newDirectoryName Name of the directory to create. User can change this name when he creates the
-     *                         folder. Use other constructor to avoid this.
-     * @param initialDirectory Optional argument to define the path of the directory
-     *                         that will be shown first.
-     *                         If it is not sent or if path denotes a non readable/writable directory
-     *                         or it is not a directory, it defaults to
-     *                         {@link android.os.Environment#getExternalStorageDirectory()}
-     * @return A new instance of fragment DirectoryChooserFragment.
-     */
-    public static DirectoryChooserFragment newInstance(
-            @NonNull final String newDirectoryName,
-            @Nullable final String initialDirectory) {
-        return newInstance(newDirectoryName, initialDirectory, false, true);
     }
 
     @Override
@@ -175,11 +110,16 @@ public class DirectoryChooserFragment extends DialogFragment {
             throw new IllegalArgumentException(
                     "You must create DirectoryChooserFragment via newInstance().");
         } else {
-            mNewDirectoryName = getArguments().getString(ARG_NEW_DIRECTORY_NAME);
-            mInitialDirectory = getArguments().getString(ARG_INITIAL_DIRECTORY);
-            mAllowReadOnlyDirectory = getArguments().getBoolean(ARG_ALLOW_READ_ONLY_DIRECTORY, false);
-            mAllowNewDirNameModification = getArguments().getBoolean(ARG_ALLOW_NEW_DIRECTORY_NAME_MODIFICATION, true);
+            mConfig = getArguments().getParcelable(ARG_CONFIG);
         }
+
+        if (mConfig == null) {
+            throw new NullPointerException("No ARG_CONFIG provided for DirectoryChooserFragment " +
+                    "creation.");
+        }
+
+        mNewDirectoryName = mConfig.newDirectoryName();
+        mInitialDirectory = mConfig.initialDirectory();
 
         if (savedInstanceState != null) {
             mInitialDirectory = savedInstanceState.getString(KEY_CURRENT_DIRECTORY);
@@ -191,7 +131,8 @@ public class DirectoryChooserFragment extends DialogFragment {
             setHasOptionsMenu(true);
         }
 
-        if (!mAllowNewDirNameModification && mNewDirectoryName != null && mNewDirectoryName.length() == 0)
+        if (!mConfig.allowNewDirectoryNameModification()
+                && mNewDirectoryName != null && mNewDirectoryName.length() == 0)
             throw new IllegalArgumentException("New directory name must have a strictly positive " +
                     "length (not zero) when user is not allowed to modify it.");
     }
@@ -277,7 +218,7 @@ public class DirectoryChooserFragment extends DialogFragment {
         mListDirectories.setAdapter(mListDirectoriesAdapter);
 
         final File initialDir;
-        if (mInitialDirectory != null && isValidFile(new File(mInitialDirectory))) {
+        if (!TextUtils.isEmpty(mInitialDirectory) && isValidFile(new File(mInitialDirectory))) {
             initialDir = new File(mInitialDirectory);
         } else {
             initialDir = Environment.getExternalStorageDirectory();
@@ -426,7 +367,8 @@ public class DirectoryChooserFragment extends DialogFragment {
             }
         });
 
-        editText.setVisibility(mAllowNewDirNameModification ? View.VISIBLE : View.GONE);
+        editText.setVisibility(mConfig.allowNewDirectoryNameModification()
+                ? View.VISIBLE : View.GONE);
     }
 
     private void debug(final String message, final Object... args) {
@@ -577,7 +519,7 @@ public class DirectoryChooserFragment extends DialogFragment {
      */
     private boolean isValidFile(final File file) {
         return (file != null && file.isDirectory() && file.canRead() &&
-                (mAllowReadOnlyDirectory || file.canWrite()));
+                (mConfig.allowNewDirectoryNameModification() || file.canWrite()));
     }
 
     @Nullable

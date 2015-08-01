@@ -30,8 +30,11 @@ public class DirectoryChooserActivityTest {
 
     @Test
     public void testSmokeInitWithExtras() {
-        launchIntent.putExtra(DirectoryChooserActivity.EXTRA_NEW_DIR_NAME,
-                "my dir");
+        final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
+                .newDirectoryName("my dir")
+                .build();
+        launchIntent.putExtra(DirectoryChooserActivity.EXTRA_CONFIG,
+                config);
         activity.onCreate(null);
     }
 }

@@ -16,43 +16,26 @@ import android.view.MenuItem;
  */
 public class DirectoryChooserActivity extends AppCompatActivity implements
         DirectoryChooserFragment.OnFragmentInteractionListener {
-    public static final String EXTRA_NEW_DIR_NAME = "directory_name";
-    public static final String EXTRA_ALLOW_NEW_DIR_NAME_MODIFICIATION = "allow_directory_name_modification";
-
-    /**
-     * Extra to define the path of the directory that will be shown first.
-     * If it is not sent or if path denotes a non readable/writable directory
-     * or it is not a directory, it defaults to
-     * {@link android.os.Environment#getExternalStorageDirectory()}
-     */
-    public static final String EXTRA_INITIAL_DIRECTORY = "initial_directory";
-
+    public static final String EXTRA_CONFIG = "config";
     public static final String RESULT_SELECTED_DIR = "selected_dir";
     public static final int RESULT_CODE_DIR_SELECTED = 1;
-
-    public static final String EXTRA_ALLOW_READ_ONLY_DIRECTORY = "allow_read_only_directory";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
-
         setContentView(R.layout.directory_chooser_activity);
 
-        final String newDirName = getIntent().getStringExtra(EXTRA_NEW_DIR_NAME);
-        final String initialDir = getIntent().getStringExtra(EXTRA_INITIAL_DIRECTORY);
-        final boolean allowReadOnlyDir = getIntent().getBooleanExtra(EXTRA_ALLOW_READ_ONLY_DIRECTORY, false);
-        final boolean allowNewDirNameModification = getIntent().getBooleanExtra(EXTRA_ALLOW_NEW_DIR_NAME_MODIFICIATION, true);
+        final DirectoryChooserConfig config = getIntent().getParcelableExtra(EXTRA_CONFIG);
 
-        if (newDirName == null) {
+        if (config == null) {
             throw new IllegalArgumentException(
-                    "You must provide EXTRA_NEW_DIR_NAME when starting the DirectoryChooserActivity.");
+                    "You must provide EXTRA_CONFIG when starting the DirectoryChooserActivity.");
         }
 
         if (savedInstanceState == null) {
             final FragmentManager fragmentManager = getFragmentManager();
-            final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(newDirName, initialDir,
-                    allowReadOnlyDir, allowNewDirNameModification);
+            final DirectoryChooserFragment fragment = DirectoryChooserFragment.newInstance(config);
             fragmentManager.beginTransaction()
                     .add(R.id.main, fragment)
                     .commit();

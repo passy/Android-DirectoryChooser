@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
+import net.rdrei.android.dirchooser.DirectoryChooserConfig;
 import net.rdrei.android.dirchooser.DirectoryChooserFragment;
 
 
@@ -19,7 +20,10 @@ public class DirChooserFragmentSample extends Activity implements DirectoryChoos
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog);
-        mDialog = DirectoryChooserFragment.newInstance("DialogSample", null);
+        final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
+                .newDirectoryName("DialogSample")
+                .build();
+        mDialog = DirectoryChooserFragment.newInstance(config);
 
         mDirectoryTextView = (TextView) findViewById(R.id.textDirectory);
 
@@ -41,6 +45,5 @@ public class DirChooserFragmentSample extends Activity implements DirectoryChoos
     @Override
     public void onCancelChooser() {
         mDialog.dismiss();
-
     }
 }

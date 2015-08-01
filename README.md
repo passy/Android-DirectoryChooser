@@ -116,11 +116,16 @@ You need to declare the `DirectoryChooserActivity` and request the
 To choose a directory, start the activity from your app logic:
 
 ```java
+
 final Intent chooserIntent = new Intent(this, DirectoryChooserActivity.class);
 
-// Optional: Allow users to create a new directory with a fixed name.
-chooserIntent.putExtra(DirectoryChooserActivity.EXTRA_NEW_DIR_NAME,
-                       "DirChooserSample");
+final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
+        .newDirectoryName("DirChooserSample")
+        .allowReadOnlyDirectory(true)
+        .allowNewDirectoryNameModification(true)
+        .build();
+
+chooserIntent.putExtra(DirectoryChooserActivity.EXTRA_CONFIG, config);
 
 // REQUEST_DIRECTORY is a constant integer to identify the request, e.g. 0
 startActivityForResult(chooserIntent, REQUEST_DIRECTORY);
@@ -162,7 +167,10 @@ public class DirChooserFragmentSample extends Activity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog);
-        mDialog = DirectoryChooserFragment.newInstance("DialogSample", null);
+        final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
+                .newDirectoryName("DialogSample")
+                .build();
+        mDialog = DirectoryChooserFragment.newInstance(config);
 
         mDirectoryTextView = (TextView) findViewById(R.id.textDirectory);
 
@@ -176,7 +184,7 @@ public class DirChooserFragmentSample extends Activity implements
     }
 
     @Override
-    public void onSelectDirectory(@Nonnull String path) {
+    public void onSelectDirectory(@NonNull String path) {
         mDirectoryTextView.setText(path);
         mDialog.dismiss();
     }
@@ -187,6 +195,44 @@ public class DirChooserFragmentSample extends Activity implements
     }
 }
 
+```
+
+### Configuration
+
+The Directory Chooser is configured through a parcelable configuration object, which is great
+because it means that you don't have to tear your hair out over finicky string extras. Instead,
+you get auto-completion and a nice immutable data structure. Here's what you can configure:
+
+#### `newDirectoryName` : String (required)
+
+Name of the directory to create. User can change this name when he creates the
+folder. To avoid this use `allowNewDirectoryNameModification` argument.
+
+#### `initialDirectory` : String (default: "")
+
+Optional argument to define the path of the directory that will be shown first.
+If it is not sent or if path denotes a non readable/writable directory or it is not a directory,
+it defaults to `android.os.Environment#getExternalStorageDirectory()`.
+
+#### `allowReadOnlyDirectory` : Boolean (default: false)
+
+Argument to define whether or not the directory chooser allows read-only paths to be chosen. If it
+false only directories with read-write access can be chosen.
+
+#### `allowNewDirectoryNameModification` : Boolean (default: false)
+
+Argument to define whether or not the directory chooser allows modification of provided new
+directory name.
+
+#### Example
+
+```java
+final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
+        .newDirectoryName("DialogSample")
+        .allowNewDirectoryNameModification(true)
+        .allowReadOnlyDirectory(true)
+        .initialDirectory("/sdcard")
+        .build();
 ```
 
 ## Apps using this
@@ -273,7 +319,7 @@ gradle build :library:uploadArchives
 ## License
 
 ```text
-Copyright 2013-2014 Pascal Hartig
+Copyright 2013-2015 Pascal Hartig
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
