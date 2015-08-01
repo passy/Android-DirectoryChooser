@@ -1,10 +1,11 @@
 Change Log
 ==========
 
-Version 2.2 (TBD)
+Version 3.0 (TBD)
 -----------------
 
  * Material update
+ * New Configuration object (breaking change)
  * Update to latest SDK version
  * Robolectric 3.0
 
