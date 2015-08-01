@@ -21,8 +21,8 @@ Based on the DirectoryChooser from the excellent
 
 <table>
 <tr>
-<th>As stand-alone Activity<br><img src="media/phone_screenshot_list.png" width="40%"></th>
-<th>As DialogFragment<br><img src="media/phone_screenshot_dialog.png" width="40%"></th>
+<th>As stand-alone Activity<br><img src="assets/chooser-activity.png" width="40%"></th>
+<th>As DialogFragment<br><img src="assets/chooser-dialog.png" width="40%"></th>
 </tr>
 </table>
 
