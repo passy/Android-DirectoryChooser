@@ -77,13 +77,13 @@ compile 'net.rdrei.android.dirchooser:library:1.0-pre-v11@aar'
 *Snapshot (SDK 11+)*
 
 ```groovy
-compile 'net.rdrei.android.dirchooser:library:2.1-SNAPSHOT@aar'
+compile 'net.rdrei.android.dirchooser:library:3.0-SNAPSHOT@aar'
 ```
 
 *Snapshot (SDK 4+)*
 
 ```groovy
-compile 'net.rdrei.android.dirchooser:library:2.1-pre-v11-SNAPSHOT@aar'
+compile 'net.rdrei.android.dirchooser:library:2.0-pre-v11-SNAPSHOT@aar'
 ```
 
 ### As Library Project
