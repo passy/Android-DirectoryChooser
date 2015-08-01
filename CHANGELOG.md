@@ -1,8 +1,8 @@
 Change Log
 ==========
 
-Version 3.0 (TBD)
------------------
+Version 3.0 (2015-08-01)
+------------------------
 
  * Material update
  * New Configuration object (breaking change)
