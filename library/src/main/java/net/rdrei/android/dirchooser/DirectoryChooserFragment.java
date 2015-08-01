@@ -41,10 +41,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Activities that contain this fragment must implement the
- * {@link DirectoryChooserFragment.OnFragmentInteractionListener} interface
+ * {@link OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link DirectoryChooserFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -66,7 +67,7 @@ public class DirectoryChooserFragment extends DialogFragment {
     private ListView mListDirectories;
 
     private ArrayAdapter<String> mListDirectoriesAdapter;
-    private ArrayList<String> mFilenames;
+    private List<String> mFilenames;
     /**
      * The directory that is currently being shown.
      */
@@ -109,9 +110,8 @@ public class DirectoryChooserFragment extends DialogFragment {
         if (getArguments() == null) {
             throw new IllegalArgumentException(
                     "You must create DirectoryChooserFragment via newInstance().");
-        } else {
-            mConfig = getArguments().getParcelable(ARG_CONFIG);
         }
+        mConfig = getArguments().getParcelable(ARG_CONFIG);
 
         if (mConfig == null) {
             throw new NullPointerException("No ARG_CONFIG provided for DirectoryChooserFragment " +
@@ -125,16 +125,16 @@ public class DirectoryChooserFragment extends DialogFragment {
             mInitialDirectory = savedInstanceState.getString(KEY_CURRENT_DIRECTORY);
         }
 
-        if (this.getShowsDialog()) {
+        if (getShowsDialog()) {
             setStyle(DialogFragment.STYLE_NO_TITLE, 0);
         } else {
             setHasOptionsMenu(true);
         }
 
-        if (!mConfig.allowNewDirectoryNameModification()
-                && mNewDirectoryName != null && mNewDirectoryName.length() == 0)
+        if (!mConfig.allowNewDirectoryNameModification() && TextUtils.isEmpty(mNewDirectoryName)) {
             throw new IllegalArgumentException("New directory name must have a strictly positive " +
                     "length (not zero) when user is not allowed to modify it.");
+        }
     }
 
     @Override
@@ -167,8 +167,8 @@ public class DirectoryChooserFragment extends DialogFragment {
             public void onClick(final View v) {
                 mListener.foreach(new UnitFunction<OnFragmentInteractionListener>() {
                     @Override
-                    public void apply(final OnFragmentInteractionListener f) {
-                        f.onCancelChooser();
+                    public void apply(final OnFragmentInteractionListener listener) {
+                        listener.onCancelChooser();
                     }
                 });
             }
@@ -177,7 +177,7 @@ public class DirectoryChooserFragment extends DialogFragment {
         mListDirectories.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
-            public void onItemClick(final AdapterView<?> adapter, final View view,
+            public void onItemClick(final AdapterView<?> parent, final View view,
                     final int position, final long id) {
                 debug("Selected index: %d", position);
                 if (mFilesInDir != null && position >= 0
@@ -371,7 +371,7 @@ public class DirectoryChooserFragment extends DialogFragment {
                 ? View.VISIBLE : View.GONE);
     }
 
-    private void debug(final String message, final Object... args) {
+    private static void debug(final String message, final Object... args) {
         Log.d(TAG, String.format(message, args));
     }
 
@@ -497,15 +497,15 @@ public class DirectoryChooserFragment extends DialogFragment {
         if (mNewDirectoryName != null && mSelectedDir != null
                 && mSelectedDir.canWrite()) {
             final File newDir = new File(mSelectedDir, mNewDirectoryName);
-            if (!newDir.exists()) {
+            if (newDir.exists()) {
+                return R.string.create_folder_error_already_exists;
+            } else {
                 final boolean result = newDir.mkdir();
                 if (result) {
                     return R.string.create_folder_success;
                 } else {
                     return R.string.create_folder_error;
                 }
-            } else {
-                return R.string.create_folder_error_already_exists;
             }
         } else if (mSelectedDir != null && !mSelectedDir.canWrite()) {
             return R.string.create_folder_error_no_write_access;

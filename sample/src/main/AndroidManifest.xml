@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="net.rdrei.android.dirchooser.sample">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -23,7 +24,8 @@
             android:name="net.rdrei.android.dirchooser.sample.DirChooserFragmentSample"
             android:label="@string/app_name"
             android:parentActivityName="net.rdrei.android.dirchooser.sample.DirChooserSample"
-            android:configChanges="orientation|screenSize">
+            android:configChanges="orientation|screenSize"
+            tools:ignore="UnusedAttribute">
         </activity>
     </application>
 
