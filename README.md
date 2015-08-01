@@ -240,7 +240,23 @@ final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
 <table>
     <tr>
         <td>
-            <a href="https://play.google.com/store/apps/details?id=net.rdrei.android.scdl2">
+            <a href="https://git.popcorntime.io/popcorntime/android">
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/master/assets/logos/popcorntime.png"
+                    title="Popcorn Time for Android"
+                    alt="Popcorn Time for Android">
+                <div>Popcorn Time for Android</div>
+            </a>
+        </td>
+        <td>
+            <a href="https://play.google.com/store/apps/details?id=com.mb.android">
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/master/assets/logos/emby.png"
+                    title="Emby for Android"
+                    alt="Emby for Android">
+                <div>Emby for Android</div>
+            </a>
+        </td>
+        <td>
+            <a href="https://github.com/passy/scdl">
                 <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/master/assets/logos/scdl.png"
                     title="Downloader for SoundCloud"
                     alt="Downloader for SoundCloud">
@@ -261,14 +277,6 @@ final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
                     title="XnRetro"
                     alt="XnRetro">
                 <div>XnRetro</div>
-            </a>
-        </td>
-        <td>
-            <a href="https://play.google.com/store/apps/details?id=com.sleepcamel.gwhale">
-                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/master/assets/logos/gwhale.png"
-                    title="GWhale"
-                    alt="GWhale">
-                <div>GWhale</div>
             </a>
         </td>
         <td>
