@@ -21,8 +21,8 @@ Based on the DirectoryChooser from the excellent
 
 <table>
 <tr>
-<th>As stand-alone Activity<br><img src="assets/chooser-activity.png" width="40%"></th>
-<th>As DialogFragment<br><img src="assets/chooser-dialog.png" width="40%"></th>
+<th>As stand-alone Activity<br><img src="assets/screenshots/chooser-activity.png" width="40%"></th>
+<th>As DialogFragment<br><img src="assets/screenshots/chooser-dialog.png" width="40%"></th>
 </tr>
 </table>
 
@@ -346,7 +346,5 @@ limitations under the License.
 
 Sample App icon by [Frank Souza](http://franksouza183.deviantart.com/).
 
- [1]: https://raw.github.com/passy/Android-DirectoryChooser/master/media/phone_screenshot_list.png
- [2]: https://raw.github.com/passy/Android-DirectoryChooser/master/media/phone_screenshot_dialog.png
  [3]: https://github.com/passy/Android-DirectoryChooser/tree/pre-v11
  [4]: https://play.google.com/store/apps/details?id=net.rdrei.android.dirchooser.sample
