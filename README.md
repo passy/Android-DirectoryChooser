@@ -41,7 +41,7 @@ from Sonatype:
 **Gradle**
 
 ```groovy
-compile 'net.rdrei.android.dirchooser:library:2.1@aar'
+compile 'net.rdrei.android.dirchooser:library:3.0@aar'
 ```
 
 **Maven**
@@ -50,7 +50,7 @@ compile 'net.rdrei.android.dirchooser:library:2.1@aar'
 <dependency>
   <groupId>net.rdrei.android.dirchooser</groupId>
   <artifactId>library</artifactId>
-  <version>2.1</version>
+  <version>3.0</version>
   <type>aar</type>
 </dependency>
 ```
@@ -77,7 +77,7 @@ compile 'net.rdrei.android.dirchooser:library:1.0-pre-v11@aar'
 *Snapshot (SDK 11+)*
 
 ```groovy
-compile 'net.rdrei.android.dirchooser:library:3.0-SNAPSHOT@aar'
+compile 'net.rdrei.android.dirchooser:library:3.1-SNAPSHOT@aar'
 ```
 
 *Snapshot (SDK 4+)*
