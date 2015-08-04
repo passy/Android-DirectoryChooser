@@ -23,9 +23,7 @@ import org.robolectric.shadows.ShadowAlertDialog;
 import org.robolectric.shadows.ShadowDialog;
 
 import static org.assertj.android.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(RobolectricGradleTestRunner.class)
 public class DirectoryChooserFragmentTest {
@@ -61,8 +59,9 @@ public class DirectoryChooserFragmentTest {
         final View chooseBtn = fragment.getActivity().findViewById(R.id.btnConfirm);
         assertThat(chooseBtn).isEnabled();
 
-        assertTrue(chooseBtn.performClick());
-        assertNotNull(((DirectoryChooserActivityMock) fragment.getActivity()).selectedDirectory);
+        assertThat(chooseBtn.performClick()).isTrue();
+        assertThat(((DirectoryChooserActivityMock) fragment.getActivity()).selectedDirectory)
+                .isNotNull();
     }
 
     @Test
@@ -87,11 +86,11 @@ public class DirectoryChooserFragmentTest {
 
         final AlertDialog dialog = (AlertDialog) ShadowDialog.getLatestDialog();
         final ShadowAlertDialog shadowAlertDialog = Shadows.shadowOf(dialog);
-        assertEquals(shadowAlertDialog.getTitle(), "Create folder");
-        assertTrue(ShadowDialog.getShownDialogs().contains(dialog));
+        assertThat(shadowAlertDialog.getTitle()).isEqualTo("Create folder");
+        assertThat(ShadowDialog.getShownDialogs()).contains(dialog);
 
         final TextView msgView = (TextView) dialog.findViewById(R.id.msgText);
-        assertEquals(msgView.getText().toString(), "Create new folder with name \"mydir\"?");
+        assertThat(msgView).hasText("Create new folder with name \"mydir\"?");
 
         final EditText editText = (EditText) dialog.findViewById(R.id.editText);
         assertThat(editText).isVisible();
@@ -120,8 +119,8 @@ public class DirectoryChooserFragmentTest {
 
         final AlertDialog dialog = (AlertDialog) ShadowDialog.getLatestDialog();
         final ShadowAlertDialog shadowAlertDialog = Shadows.shadowOf(dialog);
-        assertEquals(shadowAlertDialog.getTitle(), "Create folder");
-        assertTrue(ShadowDialog.getShownDialogs().contains(dialog));
+        assertThat(shadowAlertDialog.getTitle()).isEqualTo("Create folder");
+        assertThat(ShadowDialog.getShownDialogs()).contains(dialog);
 
         final TextView msgView = (TextView) dialog.findViewById(R.id.msgText);
         assertThat(msgView).hasText("Create new folder with name \"mydir\"?");
@@ -143,8 +142,8 @@ public class DirectoryChooserFragmentTest {
         final View chooseBtn = fragment.getActivity().findViewById(R.id.btnConfirm);
         assertThat(chooseBtn).isEnabled();
 
-        assertTrue(chooseBtn.performClick());
-        assertNotNull(listener.selectedDirectory);
+        assertThat(chooseBtn.performClick()).isTrue();
+        assertThat(listener.selectedDirectory).isNotNull();
     }
 
     static final private class DirectoryChooserActivityMock extends Activity implements
