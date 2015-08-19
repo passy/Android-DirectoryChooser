@@ -288,6 +288,16 @@ final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
             </a>
         </td>
     </tr>
+    <tr>
+        <td>
+            <a href="https://github.com/javiersantos/MLManager">
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/master/assets/logos/mlmanager.png"
+                    title="ML Manager - App manager"
+                    alt="ML Manager - App manager">
+                <div>ML Manager</div>
+            </a>
+        </td>
+    </tr>
 </table>
 
 To add your own app, please send a pull request.
