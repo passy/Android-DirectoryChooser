@@ -7,7 +7,7 @@ android:
   components:
     - extra-android-support
     - extra-android-m2repository
-    - build-tools-22.0.1
+    - build-tools-23.0.1
     - android-22
   licenses:
     - '.+'
