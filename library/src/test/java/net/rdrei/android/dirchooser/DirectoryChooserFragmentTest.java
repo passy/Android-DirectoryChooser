@@ -19,7 +19,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.Shadows;
-import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowAlertDialog;
 import org.robolectric.shadows.ShadowDialog;
 
@@ -30,19 +29,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DirectoryChooserFragmentTest {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static void startFragment(@NonNull Fragment fragment, @Nullable Class activityClass) {
+    public static void startFragment(@NonNull final Fragment fragment, @Nullable Class activityClass) {
         if (activityClass == null) {
             activityClass = Activity.class;
         }
 
-        Activity activity = (Activity) Robolectric.buildActivity(activityClass)
+        final Activity activity = (Activity) Robolectric.buildActivity(activityClass)
                 .create()
                 .start()
                 .resume()
                 .get();
 
-        FragmentManager fragmentManager = activity.getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        final FragmentManager fragmentManager = activity.getFragmentManager();
+        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.main, fragment);
         fragmentTransaction.commit();
 
@@ -147,19 +146,19 @@ public class DirectoryChooserFragmentTest {
         assertThat(listener.selectedDirectory).isNotNull();
     }
 
-    static final private class DirectoryChooserActivityMock extends Activity implements
+    private static class DirectoryChooserActivityMock extends Activity implements
             DirectoryChooserFragment.OnFragmentInteractionListener {
         public String selectedDirectory;
 
         @Override
-        public void onCreate(@Nullable Bundle bundle) {
-            super.onCreate(bundle);
+        public void onCreate(@Nullable final Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
             setContentView(R.layout.directory_chooser_activity);
         }
 
         @Override
-        public void onSelectDirectory(@NonNull String path) {
-            this.selectedDirectory = path;
+        public void onSelectDirectory(@NonNull final String path) {
+            selectedDirectory = path;
         }
 
         @Override
@@ -170,7 +169,7 @@ public class DirectoryChooserFragmentTest {
 
     private static class CustomDirectoryChooserActivity extends Activity {
         @Override
-        protected void onCreate(Bundle savedInstanceState) {
+        protected void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.directory_chooser_activity);
         }
@@ -181,7 +180,7 @@ public class DirectoryChooserFragmentTest {
         public String selectedDirectory;
 
         @Override
-        public void onSelectDirectory(@NonNull String path) {
+        public void onSelectDirectory(@NonNull final String path) {
             selectedDirectory = path;
         }
 
