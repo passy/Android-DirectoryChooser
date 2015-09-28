@@ -30,11 +30,8 @@ public class DirectoryChooserFragmentTest {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static void startFragment(@NonNull final Fragment fragment, @Nullable Class activityClass) {
-        if (activityClass == null) {
-            activityClass = Activity.class;
-        }
-
-        final Activity activity = (Activity) Robolectric.buildActivity(activityClass)
+        final Activity activity = (Activity) Robolectric
+                .buildActivity(activityClass == null ? Activity.class : activityClass)
                 .create()
                 .start()
                 .resume()
