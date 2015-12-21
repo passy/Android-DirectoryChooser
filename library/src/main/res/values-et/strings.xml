@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="cancel_label">Katkesta</string>
+    <string name="confirm_label">Kinnita</string>
+    <string name="selected_folder_label">Valitud kaust:</string>
+    <string name="create_folder_label">Loo kaust</string>
+    <string name="create_folder_msg">Loo kaust nimega "%1$s"?</string>
+    <string name="create_folder_success">Uus kaust loodud</string>
+    <string name="create_folder_error_no_write_access">Sellesse kausta pole võimalik kirjutada</string>
+    <string name="create_folder_error_already_exists">Selline kaust juba eksisteerib</string>
+    <string name="create_folder_error">Kausta loomine ebaõnnestus</string>
+    <string name="up_label">Üles</string>
+
+</resources>
