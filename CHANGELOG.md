@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 3.1 (2015-12-22)
+------------------------
+
+* Add Estonian translations (via @harri35)
+
 Version 3.0 (2015-08-01)
 ------------------------
 
