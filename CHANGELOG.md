@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 3.2 (2016-02-10)
+------------------------
+
+* Re-release because of Maven Central glitch.
+* Bumped build tools.
+
 Version 3.1 (2015-12-22)
 ------------------------
 
