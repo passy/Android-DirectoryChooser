@@ -14,7 +14,7 @@ using ActionBarSherlock.
 
 You can download the sample app from the Play Store:
 
-[![Download from Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_45.png)][4]
+<a href="https://play.google.com/store/apps/details?id=net.rdrei.android.dirchooser.sample"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge.png" height="45px" /></a>
 
 Based on the DirectoryChooser from the excellent
 [AntennaPod App](https://github.com/danieloeh/AntennaPod) by danieloeh.
