@@ -197,6 +197,16 @@ public class DirChooserFragmentSample extends Activity implements
 
 ```
 
+If calling the directory chooser from your own fragment, be sure to set the target fragment first:
+
+```java
+@Override
+public void onClick(View v) {
+    mDialog.setTargetFragment(this, 0);
+    mDialog.show(getFragmentManager(), null);
+}
+```
+
 ### Configuration
 
 The Directory Chooser is configured through a parcelable configuration object, which is great
