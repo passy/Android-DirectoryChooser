@@ -307,6 +307,14 @@ final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
                 <div>ML Manager</div>
             </a>
         </td>
+        <td>
+            <a href="https://play.google.com/store/apps/details?id=com.hovans.autoguard">
+                <img src=""http://lh6.ggpht.com/BDL7_TGGJ1fk2e3lbeTKklLGnTfQF_ldetOla6NwrBWubSsI7BFO-zHF5sEBxjr5PS8q=w300-rw"
+                    title="AutoGuard Dash Cam - Blackbox"
+                    alt="AutoGuard Dash Cam - Blackbox">
+                <div>AutoGuard</div>
+            </a>
+        </td>
     </tr>
 </table>
 
