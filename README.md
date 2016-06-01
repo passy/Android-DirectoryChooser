@@ -307,6 +307,14 @@ final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
                 <div>ML Manager</div>
             </a>
         </td>
+        <td>
+            <a href="https://play.google.com/store/apps/details?id=com.hovans.autoguard">
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/master/assets/logos/autoguard.png"
+                    title="AutoGuard - Dash Cam"
+                    alt="AutoGuard - Dash Cam">
+                <div>AutoGuard</div>
+            </a>
+        </td>
     </tr>
 </table>
 
