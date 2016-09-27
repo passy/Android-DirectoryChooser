@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 3.x (TBD)
+-----------------
+
+* Add Italian translations (via @maurosoft1973).
+
 Version 3.2 (2016-02-10)
 ------------------------
 
