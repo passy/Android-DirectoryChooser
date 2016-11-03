@@ -315,6 +315,14 @@ final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
                 <div>AutoGuard</div>
             </a>
         </td>
+        <td>
+            <a href="https://github.com/adithya321/Companion-for-Band">
+                <img src="https://raw.githubusercontent.com/passy/Android-DirectoryChooser/master/assets/logos/CompanionForBand.png"
+                    title="Companion for Band"
+                    alt="Companion for Band">
+                <div>Companion for Band</div>
+            </a>
+        </td>
     </tr>
 </table>
 
