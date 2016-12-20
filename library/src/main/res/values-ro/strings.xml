@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="confirm_label">Confirm</string>
+  <string name="selected_folder_label">Dosar selectat:</string>
+  <string name="create_folder_label">Crează dosar</string>
+  <string name="create_folder_msg">Crează dosar nou cu numele "%1$s"?</string>
+  <string name="create_folder_success">Dosar nou creat</string>
+  <string name="create_folder_error_no_write_access">Nu se poate scrie în acest dosar</string>
+  <string name="create_folder_error_already_exists">Dosarul există deja</string>
+  <string name="create_folder_error">Nu s-a putut crea dosarul</string>
+  <string name="up_label">Sus</string>
+</resources>

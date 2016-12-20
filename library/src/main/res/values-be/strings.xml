@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="confirm_label">Пацвердзіць</string>
+  <string name="selected_folder_label">Абраная папка:</string>
+  <string name="create_folder_label">Новая папка</string>
+  <string name="create_folder_msg">Стварыць новую папку "%1$s"?</string>
+  <string name="create_folder_success">Папка створана</string>
+  <string name="create_folder_error_no_write_access">Папка абаронена ад запісу</string>
+  <string name="create_folder_error_already_exists">Папка ўжо існуе</string>
+  <string name="create_folder_error">Немагчыма стварыць папку</string>
+  <string name="up_label">Уверх</string>
+</resources>

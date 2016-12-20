@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="confirm_label">Confirmar</string>
+  <string name="selected_folder_label">Pasta selecionada:</string>
+  <string name="create_folder_label">Criar pasta</string>
+  <string name="create_folder_msg">Criar nova pasta com o nome "%1$s"?</string>
+  <string name="create_folder_success">Criada nova pasta</string>
+  <string name="create_folder_error_no_write_access">Não foi possível escrever sobre esta pasta</string>
+  <string name="create_folder_error_already_exists">Pasta já existe</string>
+  <string name="create_folder_error">Não foi possível criar a pasta</string>
+  <string name="up_label">Subir</string>
+</resources>

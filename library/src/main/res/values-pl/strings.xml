@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="confirm_label">Zatwierdź</string>
+  <string name="selected_folder_label">Wybierz katalog:</string>
+  <string name="create_folder_label">Utwórz katalog</string>
+  <string name="create_folder_msg">Utwórz nowy katalog z nazwą "%1$s"?</string>
+  <string name="create_folder_success">Utwórz nowy katalog</string>
+  <string name="create_folder_error_no_write_access">Nie można zapisać w katalogu</string>
+  <string name="create_folder_error_already_exists">Katalog już istnieje</string>
+  <string name="create_folder_error">Nie można utworzyć katalogu</string>
+  <string name="up_label">Wyżej</string>
+</resources>
