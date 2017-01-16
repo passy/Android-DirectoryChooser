@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="confirm_label">Bekræft</string>
+  <string name="selected_folder_label">Vælg folder:</string>
+  <string name="create_folder_label">Lav folder</string>
+  <string name="create_folder_msg">Lav ny folder med navnet "%1$s"?</string>
+  <string name="create_folder_success">Ny folder lavet</string>
+  <string name="create_folder_error_no_write_access">Kan ikke skrive til denne folder</string>
+  <string name="create_folder_error_already_exists">Folderen eksisterer allerede</string>
+  <string name="create_folder_error">Kunne ikke oprette folderen</string>
+  <string name="up_label">Op</string>
+</resources>

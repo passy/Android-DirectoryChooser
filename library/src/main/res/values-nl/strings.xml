@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="confirm_label">Bevestigen</string>
+  <string name="selected_folder_label">Geselecteerde map:</string>
+  <string name="create_folder_label">Maak nieuwe map aan</string>
+  <string name="create_folder_msg">Nieuwe map aanmaken met de naam "%1$s"?</string>
+  <string name="create_folder_success">Nieuwe map aangemaakt</string>
+  <string name="create_folder_error_no_write_access">Kan niet in deze map schrijven</string>
+  <string name="create_folder_error_already_exists">Map bestaat al</string>
+  <string name="create_folder_error">Map maken mislukt</string>
+  <string name="up_label">Omhoog</string>
+</resources>

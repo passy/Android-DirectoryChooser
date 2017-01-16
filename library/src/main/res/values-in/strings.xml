@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="confirm_label">Konfirm</string>
+  <string name="selected_folder_label">Folder terpilih:</string>
+  <string name="create_folder_label">Buat folder</string>
+  <string name="create_folder_msg">Buat folder baru dengan nama "%1$s"?</string>
+  <string name="create_folder_success">Folder berhasil dibuat</string>
+  <string name="create_folder_error_no_write_access">Tidak dapat menulis di folder ini</string>
+  <string name="create_folder_error_already_exists">Folder sudah ada</string>
+  <string name="create_folder_error">Tidak dapat membuat folder</string>
+  <string name="up_label">Atas</string>
+</resources>

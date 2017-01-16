@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="cancel_label">Anulla</string>
-    <string name="confirm_label">Conferma</string>
-    <string name="selected_folder_label">Seleziona Directory:</string>
-    <string name="create_folder_label">Crea Directory</string>
-    <string name="create_folder_msg">Creare una nuova Directory con il nome "%1$s"?</string>
-    <string name="create_folder_success">Nuova Directory Creata</string>
-    <string name="create_folder_error_no_write_access">Non si può scrivere in questa Directory</string>
-    <string name="create_folder_error_already_exists">La Directory esiste già</string>
-    <string name="create_folder_error">Impossibile creare la Directory</string>
-    <string name="up_label">Su</string>
+  <string name="confirm_label">Conferma</string>
+  <string name="selected_folder_label">Seleziona cartella:</string>
+  <string name="create_folder_label">Crea cartella</string>
+  <string name="create_folder_msg">Creare una nuova cartella con il nome "%1$s"?</string>
+  <string name="create_folder_success">Nuova cartella Creata</string>
+  <string name="create_folder_error_no_write_access">Impossibile scrivere in questa cartella</string>
+  <string name="create_folder_error_already_exists">La cartella esiste già</string>
+  <string name="create_folder_error">Impossibile creare la cartella</string>
+  <string name="up_label">Su</string>
 </resources>

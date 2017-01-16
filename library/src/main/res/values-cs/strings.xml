@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="confirm_label">Potvrdit</string>
+  <string name="selected_folder_label">Vybrat složku:</string>
+  <string name="create_folder_label">Vytvořit složku</string>
+  <string name="create_folder_msg">Vytvořit složku s názvem "%1$s"?</string>
+  <string name="create_folder_success">Nová složka vytvořena</string>
+  <string name="create_folder_error_no_write_access">Nelze zapisovat do této složky</string>
+  <string name="create_folder_error_already_exists">Tato složka již existuje</string>
+  <string name="create_folder_error">Složku se nepodařilo vytvořit</string>
+  <string name="up_label">Nahoru</string>
+</resources>
