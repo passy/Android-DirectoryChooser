@@ -9,4 +9,5 @@
   <string name="create_folder_error_already_exists">Priečinok už existuje</string>
   <string name="create_folder_error">Nemožno vytvoriť priečinok</string>
   <string name="up_label">Hore</string>
+  <string name="cancel_label">Vazgeç</string>
 </resources>

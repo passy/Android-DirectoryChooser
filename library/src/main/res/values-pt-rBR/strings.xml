@@ -9,4 +9,5 @@
   <string name="create_folder_error_already_exists">Pasta já existe</string>
   <string name="create_folder_error">Não foi possível criar a pasta</string>
   <string name="up_label">Subir</string>
+  <string name="cancel_label">Cancelar</string>
 </resources>

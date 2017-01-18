@@ -9,4 +9,5 @@
   <string name="create_folder_error_already_exists">Папка ўжо існуе</string>
   <string name="create_folder_error">Немагчыма стварыць папку</string>
   <string name="up_label">Уверх</string>
+  <string name="cancel_label">Отмена</string>
 </resources>

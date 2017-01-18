@@ -9,4 +9,5 @@
   <string name="create_folder_error_already_exists">La cartella esiste già</string>
   <string name="create_folder_error">Impossibile creare la cartella</string>
   <string name="up_label">Su</string>
+  <string name="cancel_label">Annulla</string>
 </resources>

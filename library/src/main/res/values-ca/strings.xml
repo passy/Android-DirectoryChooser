@@ -9,4 +9,5 @@
   <string name="create_folder_error_already_exists">La carpeta ja existeix</string>
   <string name="create_folder_error">No s’ha pogut crear la carpeta</string>
   <string name="up_label">Amunt</string>
+  <string name="cancel_label">Cancel·lar</string>
 </resources>

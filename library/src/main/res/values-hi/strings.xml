@@ -9,4 +9,5 @@
   <string name="create_folder_error_already_exists">फ़ोल्डर पहले से ही मौजूद है</string>
   <string name="create_folder_error">फ़ोल्डर नहीं बना सका</string>
   <string name="up_label">ऊपर</string>
+  <string name="cancel_label">रद्द करना</string>
 </resources>

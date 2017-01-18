@@ -9,4 +9,5 @@
   <string name="create_folder_error_already_exists">Folderen eksisterer allerede</string>
   <string name="create_folder_error">Kunne ikke oprette folderen</string>
   <string name="up_label">Op</string>
+  <string name="cancel_label">Afbryd</string>
 </resources>

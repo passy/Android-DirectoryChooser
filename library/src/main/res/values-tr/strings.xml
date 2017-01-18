@@ -9,4 +9,5 @@
   <string name="create_folder_error_already_exists">Klasör zaten mevcut</string>
   <string name="create_folder_error">Klasör Oluşturulamıyor</string>
   <string name="up_label">Yukarı</string>
+  <string name="cancel_label">Vazgeç</string>
 </resources>

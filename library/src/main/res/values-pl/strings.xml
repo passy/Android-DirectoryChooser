@@ -9,4 +9,5 @@
   <string name="create_folder_error_already_exists">Katalog już istnieje</string>
   <string name="create_folder_error">Nie można utworzyć katalogu</string>
   <string name="up_label">Wyżej</string>
+  <string name="cancel_label">Anuluj</string>
 </resources>
