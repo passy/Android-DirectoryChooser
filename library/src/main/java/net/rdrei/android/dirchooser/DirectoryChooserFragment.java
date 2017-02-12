@@ -420,6 +420,8 @@ public class DirectoryChooserFragment extends DialogFragment {
                 mFileObserver.startWatching();
                 debug("Changed directory to %s", dir.getAbsolutePath());
             } else {
+                // Try to skip this element (e.g. /sdcard/emulated) to be able to navigate to /
+                changeDirectory(dir.getParentFile());
                 debug("Could not change folder: contents of dir were null");
             }
         }
