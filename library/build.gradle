@@ -1,7 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'checkstyle'
-apply plugin: 'com.github.ben-manes.versions'
 
 buildscript {
     repositories {
@@ -14,32 +12,29 @@ buildscript {
 }
 
 repositories {
-  mavenCentral()
-  maven { url 'http://guardian.github.com/maven/repo-releases' }
+    mavenCentral()
+    maven { url 'http://guardian.github.com/maven/repo-releases' }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.android.support:support-annotations:22.2.1'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:support-annotations:25.3.1'
     compile 'com.gu:option:1.3'
     compile 'com.github.frankiesardo:auto-parcel:0.3.1'
     compile 'com.google.auto.value:auto-value:1.1'
-    apt 'com.github.frankiesardo:auto-parcel-processor:0.3.1'
+    annotationProcessor 'com.github.frankiesardo:auto-parcel-processor:0.3.1'
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-all:1.9.5'
-    testCompile 'com.squareup.assertj:assertj-android:1.1.0'
+    testCompile 'com.squareup.assertj:assertj-android:1.1.1'
     testCompile 'org.apache.maven:maven-ant-tasks:2.1.3' // fixes issue on linux/mac
-    testCompile('org.robolectric:robolectric:3.0')
-    testCompile('org.robolectric:shadows-support-v4:3.0') {
-        exclude group: 'commons-logging', module: 'commons-logging'
-        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
-    }
+    testCompile 'org.robolectric:robolectric:3.3'
+    testCompile 'org.robolectric:shadows-support-v4:3.3'
 }
 
 android {
-  compileSdkVersion 22
-  buildToolsVersion '23.0.1'
+  compileSdkVersion 25
+  buildToolsVersion '25.0.2'
 
   defaultConfig {
     minSdkVersion 11
@@ -62,7 +57,6 @@ checkstyle {
 }
 
 apply from: 'https://raw.githubusercontent.com/robbypond/gradle-mvn-push/8f35c0555e9c71154c08dfde9397340099f8dc9f/gradle-mvn-push.gradle'
-
 
 gradle.taskGraph.whenReady { taskGraph ->
   if (taskGraph.allTasks.any { it instanceof Sign } &&
