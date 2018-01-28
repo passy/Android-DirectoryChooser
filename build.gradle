@@ -11,3 +11,12 @@ buildscript {
         classpath 'com.android.tools.build:gradle:2.3.0'
     }
 }
+
+subprojects {
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://jitpack.io/'
+        }
+    }
+}
