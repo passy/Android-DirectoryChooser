@@ -1,10 +1,5 @@
 apply plugin: 'com.android.application'
 
-repositories {
-    mavenCentral()
-    maven { url 'http://guardian.github.com/maven/repo-releases' }
-}
-
 dependencies {
     compile project(':library')
 }
