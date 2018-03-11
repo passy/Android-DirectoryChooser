@@ -525,7 +525,7 @@ public class DirectoryChooserFragment extends DialogFragment {
      */
     private boolean isValidFile(final File file) {
         return (file != null && file.isDirectory() && file.canRead() &&
-                (mConfig.allowNewDirectoryNameModification() || file.canWrite()));
+                (mConfig.allowReadOnlyDirectory() || file.canWrite()));
     }
 
     @Nullable
