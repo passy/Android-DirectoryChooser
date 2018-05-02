@@ -323,6 +323,14 @@ final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
                 <div>Companion for Band</div>
             </a>
         </td>
+        <td>
+            <a href="https://github.com/sdabhi23/Swallow-Server">
+                <img src="https://i.imgur.com/kTFWJV8.png"
+                    title="Swallow Server"
+                    alt="Swallow Server">
+                <div>Swallow Server</div>
+            </a>
+        </td>
     </tr>
 </table>
 
