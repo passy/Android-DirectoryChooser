@@ -331,6 +331,14 @@ final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
                 <div>Swallow Server</div>
             </a>
         </td>
+        <td>
+            <a href="https://play.google.com/store/apps/details?id=com.levionsoftware.instagram_map">
+                <img src="https://lh3.googleusercontent.com/yYw3NvqPcq8AF1hz0_JGWd9YbVTYS7HyvkcdiBaNMcZFoXhkkLS_t8NbYWf4-fp1g_0=s250"
+                    title="Photo Map"
+                    alt="Photo Map">
+                <div>Photo Map</div>
+            </a>
+        </td>
     </tr>
 </table>
 
