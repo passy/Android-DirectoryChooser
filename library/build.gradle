@@ -16,7 +16,8 @@ dependencies {
     compile 'com.android.support:support-annotations:25.3.1'
     compile 'com.github.guardian:Option:e933c3a31d'
     compile 'com.github.frankiesardo:auto-parcel:0.3.1'
-    compile 'com.google.auto.value:auto-value:1.1'
+    compileOnly 'com.google.auto.value:auto-value:1.1'
+    annotationProcessor 'com.google.auto.value:auto-value:1.1'
     annotationProcessor 'com.github.frankiesardo:auto-parcel-processor:0.3.1'
 
     testCompile 'junit:junit:4.12'
